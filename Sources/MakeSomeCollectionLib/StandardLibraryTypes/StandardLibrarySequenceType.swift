@@ -7,7 +7,7 @@
 //
 
 public enum StandardLibrarySequenceType {
-    /// All the genericName Sequence types in the standard library.
+    /// All the generic Sequence types in the standard library.
     public static let values: Set<SequenceType> = {
         let sequenceTypes: Set<SequenceType> = [
             // Sequence Types
@@ -24,10 +24,19 @@ public enum StandardLibrarySequenceType {
             "JoinedSequence",
             "LazyDropWhileSequence",
             "LazyFilterSequence",
-            "LazyFilterSequence.Iterator",
-            "LazyMapSequence.Iterator",
+            .init(
+                "LazyFilterSequence.Iterator",
+                isLazy: false
+            ),
+            .init(
+                "LazyMapSequence.Iterator",
+                isLazy: false
+            ),
             "LazyPrefixWhileSequence",
-            "LazyPrefixWhileSequence.Iterator",
+            .init(
+                "LazyPrefixWhileSequence.Iterator",
+                isLazy: false
+            ),
             "LazySequence",
             .init(
                 "PartialRangeFrom",

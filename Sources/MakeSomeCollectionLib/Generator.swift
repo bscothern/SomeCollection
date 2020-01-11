@@ -93,6 +93,10 @@ public struct Generator {
                 public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
                 public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
                 public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
+                public protocol Lazy\(elementType.sequenceName): LazySequenceProtocol, \(elementType.sequenceName) {}
+                public protocol Lazy\(elementType.collectionName): LazyCollectionProtocol, \(elementType.collectionName) {}
+                public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
+                public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
                 """
 
                 if isRestricted {
@@ -177,6 +181,36 @@ public struct Generator {
                                 }
                             }
                         }
+                        
+                        if sequenceType.isLazy {
+                            if sequenceType.skipWhereClause {
+                                conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceName) {}"
+
+                                if isCollectionTypes {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionName) {}"
+                                }
+
+                                if !sequenceType.skipOptional {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceNameOptional) {}"
+                                    if isCollectionTypes {
+                                        conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionNameOptional) {}"
+                                    }
+                                }
+                            } else {
+                                conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceName) where \(sequenceType.genericName) == \(elementType.name) {}"
+                                if isCollectionTypes {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionName) where \(sequenceType.genericName) == \(elementType.name) {}"
+                                }
+
+                                if !sequenceType.skipOptional {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
+                                    if isCollectionTypes {
+                                        conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
+                                    }
+                                }
+                            }
+
+                        }
 
                         if isRestricted {
                             conformances += "\n#endif"
@@ -196,4 +230,10 @@ fileprivate extension ElementType {
 
     var sequenceNameOptional: String { "SequenceOfOptional\(simpleName)" }
     var collectionNameOptional: String { "CollectionOfOptional\(simpleName)" }
+    
+    var lazySequenceName: String { "LazySequenceOf\(simpleName)" }
+    var lazyCollectionName: String { "LazyCollectionOf\(simpleName)" }
+
+    var lazySequenceNameOptional: String { "LazySequenceOfOptional\(simpleName)" }
+    var lazyCollectionNameOptional: String { "LazyCollectionOfOptional\(simpleName)" }
 }

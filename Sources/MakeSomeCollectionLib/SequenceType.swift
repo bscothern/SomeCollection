@@ -13,15 +13,17 @@ public struct SequenceType: Hashable {
     @usableFromInline let skipWhereClause: Bool
     @usableFromInline let skipOptional: Bool
     @usableFromInline let genericName: String
+    @usableFromInline let isLazy: Bool
 
     @inlinable
-    public init(_ name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, genericName: String = "Element") {
+    public init(_ name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, genericName: String = "Element", isLazy: Bool? = nil) {
         self.name = name
         self.limitedToElementTypes = limitedToElementTypes
         self.excludedElementTypes = excludedElementTypes
         self.skipWhereClause = skipWhereClause
         self.skipOptional = skipOptional
         self.genericName = genericName
+        self.isLazy = isLazy ?? name.contains("Lazy")
     }
 }
 
