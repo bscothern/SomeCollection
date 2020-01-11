@@ -15,7 +15,7 @@ public enum StandardLibraryCollectionType {
         "AnyCollection",
         .init(name: "ClosedRange", limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"], skipOptional: true, generic: "Bound"),
         .init(name: "DefaultIndices", excluding: ["Bool", "Error"], skipOptional: true),
-//        .init(name: "Dictionary", keyOrValue: .both),
+//        "Dictionary"
         .init(name: "Dictionary.Keys", excluding: ["Error"]),
         .init(name: "Set", excluding: ["Error"]),
         "Slice",
@@ -23,13 +23,13 @@ public enum StandardLibraryCollectionType {
         // BidirectionalCollection Types
         "AnyBidirectionalCollection",
         "ReversedCollection",
-        .init(name: "String", limitedTo: ["Character"]),
-        .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
-        .init(name: "String.UTF16View", limitedTo: ["UTF16.CodeUnit"]),
-        .init(name: "String.UTF8View", limitedTo: ["UTF8.CodeUnit"]),
-        .init(name: "Substring.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
-        .init(name: "Substring.UTF16View", limitedTo: ["String.UTF16View.Element"]),
-        .init(name: "Substring.UTF8View", limitedTo: ["String.UTF8View.Element"]),
+        .init(name: "String", limitedTo: ["Character"], skipWhereClause: true, skipOptional: true),
+        .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"], skipWhereClause: true, skipOptional: true),
+        .init(name: "String.UTF16View", limitedTo: ["UTF16.CodeUnit"], skipWhereClause: true, skipOptional: true),
+        .init(name: "String.UTF8View", limitedTo: ["UTF8.CodeUnit"], skipWhereClause: true, skipOptional: true),
+        .init(name: "Substring.UnicodeScalarView", limitedTo: ["Unicode.Scalar"], skipWhereClause: true, skipOptional: true),
+        .init(name: "Substring.UTF16View", limitedTo: ["String.UTF16View.Element"], skipWhereClause: true, skipOptional: true),
+        .init(name: "Substring.UTF8View", limitedTo: ["String.UTF8View.Element"], skipWhereClause: true, skipOptional: true),
 
         // MutableCollection Type
         "Array",
@@ -42,12 +42,12 @@ public enum StandardLibraryCollectionType {
         .init(name: "UnsafeMutableRawBufferPointer", limitedTo: ["UInt8"], skipWhereClause: true, skipOptional: true),
 
         // RangeReplaceableCollection Type
-        "Array",
-        "ArraySlice",
-        "ContiguousArray",
-        .init(name: "String", limitedTo: ["Character"]),
-        .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
-        .init(name: "Substring", limitedTo: ["Character"]),
-        .init(name: "Substring.UnicodeScalarView", limitedTo: ["String.UnicodeScalarView.Element"]),
+//        Array is defined above
+//        ArraySlice is defined above
+//        ContiguousArray is defined above
+//        String is defined above
+//        String.UnicodeScalarView is defined above
+//        Substring is defined above
+//        Substring.UnicodeScalarView is defined above
     ]
 }

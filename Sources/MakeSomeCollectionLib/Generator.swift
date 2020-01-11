@@ -190,9 +190,9 @@ public struct Generator {
 }
 
 fileprivate extension ElementType {
-    var sequenceName: String { "SequenceOf\(name)" }
-    var collectionName: String { "CollectionOf\(name)" }
+    var sequenceName: String { "SequenceOf\(simpleName)" }
+    var collectionName: String { "CollectionOf\(simpleName)" }
 
-    var sequenceNameOptional: String { "SequenceOfOptional\(name)" }
-    var collectionNameOptional: String { "CollectionOfOptional\(name)" }
+    var sequenceNameOptional: String { "SequenceOfOptional\(simpleName)" }
+    var collectionNameOptional: String { "CollectionOfOptional\(simpleName)" }
 }

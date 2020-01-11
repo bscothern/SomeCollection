@@ -9,6 +9,8 @@
 public struct ElementType: Hashable {
     let name: String
     let applicablePlatforms: Set<Platform>
+    
+    var simpleName: String { name.replacingOccurrences(of: ".", with: "") }
 
     public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases)) {
         self.name = name

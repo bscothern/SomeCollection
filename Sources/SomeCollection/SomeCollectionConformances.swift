@@ -10,6 +10,10 @@ extension AnyBidirectionalCollection: SequenceOfBool where Element == Bool {}
 extension AnyBidirectionalCollection: CollectionOfBool where Element == Bool {}
 extension AnyBidirectionalCollection: SequenceOfOptionalBool where Element == Bool? {}
 extension AnyBidirectionalCollection: CollectionOfOptionalBool where Element == Bool? {}
+extension AnyBidirectionalCollection: SequenceOfCharacter where Element == Character {}
+extension AnyBidirectionalCollection: CollectionOfCharacter where Element == Character {}
+extension AnyBidirectionalCollection: SequenceOfOptionalCharacter where Element == Character? {}
+extension AnyBidirectionalCollection: CollectionOfOptionalCharacter where Element == Character? {}
 extension AnyBidirectionalCollection: SequenceOfDouble where Element == Double {}
 extension AnyBidirectionalCollection: CollectionOfDouble where Element == Double {}
 extension AnyBidirectionalCollection: SequenceOfOptionalDouble where Element == Double? {}
@@ -52,6 +56,10 @@ extension AnyBidirectionalCollection: SequenceOfString where Element == String {
 extension AnyBidirectionalCollection: CollectionOfString where Element == String {}
 extension AnyBidirectionalCollection: SequenceOfOptionalString where Element == String? {}
 extension AnyBidirectionalCollection: CollectionOfOptionalString where Element == String? {}
+extension AnyBidirectionalCollection: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnyBidirectionalCollection: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnyBidirectionalCollection: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension AnyBidirectionalCollection: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension AnyBidirectionalCollection: SequenceOfSubstring where Element == Substring {}
 extension AnyBidirectionalCollection: CollectionOfSubstring where Element == Substring {}
 extension AnyBidirectionalCollection: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -76,11 +84,27 @@ extension AnyBidirectionalCollection: SequenceOfUInt8 where Element == UInt8 {}
 extension AnyBidirectionalCollection: CollectionOfUInt8 where Element == UInt8 {}
 extension AnyBidirectionalCollection: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension AnyBidirectionalCollection: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension AnyBidirectionalCollection: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnyBidirectionalCollection: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnyBidirectionalCollection: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnyBidirectionalCollection: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnyBidirectionalCollection: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnyBidirectionalCollection: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnyBidirectionalCollection: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnyBidirectionalCollection: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnyBidirectionalCollection: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnyBidirectionalCollection: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnyBidirectionalCollection: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension AnyBidirectionalCollection: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension AnyCollection: SequenceOfBool where Element == Bool {}
 extension AnyCollection: CollectionOfBool where Element == Bool {}
 extension AnyCollection: SequenceOfOptionalBool where Element == Bool? {}
 extension AnyCollection: CollectionOfOptionalBool where Element == Bool? {}
+extension AnyCollection: SequenceOfCharacter where Element == Character {}
+extension AnyCollection: CollectionOfCharacter where Element == Character {}
+extension AnyCollection: SequenceOfOptionalCharacter where Element == Character? {}
+extension AnyCollection: CollectionOfOptionalCharacter where Element == Character? {}
 extension AnyCollection: SequenceOfDouble where Element == Double {}
 extension AnyCollection: CollectionOfDouble where Element == Double {}
 extension AnyCollection: SequenceOfOptionalDouble where Element == Double? {}
@@ -123,6 +147,10 @@ extension AnyCollection: SequenceOfString where Element == String {}
 extension AnyCollection: CollectionOfString where Element == String {}
 extension AnyCollection: SequenceOfOptionalString where Element == String? {}
 extension AnyCollection: CollectionOfOptionalString where Element == String? {}
+extension AnyCollection: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnyCollection: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnyCollection: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension AnyCollection: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension AnyCollection: SequenceOfSubstring where Element == Substring {}
 extension AnyCollection: CollectionOfSubstring where Element == Substring {}
 extension AnyCollection: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -147,11 +175,27 @@ extension AnyCollection: SequenceOfUInt8 where Element == UInt8 {}
 extension AnyCollection: CollectionOfUInt8 where Element == UInt8 {}
 extension AnyCollection: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension AnyCollection: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension AnyCollection: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnyCollection: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnyCollection: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnyCollection: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnyCollection: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnyCollection: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnyCollection: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnyCollection: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnyCollection: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnyCollection: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnyCollection: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension AnyCollection: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension Array: SequenceOfBool where Element == Bool {}
 extension Array: CollectionOfBool where Element == Bool {}
 extension Array: SequenceOfOptionalBool where Element == Bool? {}
 extension Array: CollectionOfOptionalBool where Element == Bool? {}
+extension Array: SequenceOfCharacter where Element == Character {}
+extension Array: CollectionOfCharacter where Element == Character {}
+extension Array: SequenceOfOptionalCharacter where Element == Character? {}
+extension Array: CollectionOfOptionalCharacter where Element == Character? {}
 extension Array: SequenceOfDouble where Element == Double {}
 extension Array: CollectionOfDouble where Element == Double {}
 extension Array: SequenceOfOptionalDouble where Element == Double? {}
@@ -194,6 +238,10 @@ extension Array: SequenceOfString where Element == String {}
 extension Array: CollectionOfString where Element == String {}
 extension Array: SequenceOfOptionalString where Element == String? {}
 extension Array: CollectionOfOptionalString where Element == String? {}
+extension Array: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Array: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Array: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension Array: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension Array: SequenceOfSubstring where Element == Substring {}
 extension Array: CollectionOfSubstring where Element == Substring {}
 extension Array: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -218,11 +266,27 @@ extension Array: SequenceOfUInt8 where Element == UInt8 {}
 extension Array: CollectionOfUInt8 where Element == UInt8 {}
 extension Array: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension Array: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension Array: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Array: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Array: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Array: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Array: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Array: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Array: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Array: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Array: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Array: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Array: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension Array: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension ArraySlice: SequenceOfBool where Element == Bool {}
 extension ArraySlice: CollectionOfBool where Element == Bool {}
 extension ArraySlice: SequenceOfOptionalBool where Element == Bool? {}
 extension ArraySlice: CollectionOfOptionalBool where Element == Bool? {}
+extension ArraySlice: SequenceOfCharacter where Element == Character {}
+extension ArraySlice: CollectionOfCharacter where Element == Character {}
+extension ArraySlice: SequenceOfOptionalCharacter where Element == Character? {}
+extension ArraySlice: CollectionOfOptionalCharacter where Element == Character? {}
 extension ArraySlice: SequenceOfDouble where Element == Double {}
 extension ArraySlice: CollectionOfDouble where Element == Double {}
 extension ArraySlice: SequenceOfOptionalDouble where Element == Double? {}
@@ -265,6 +329,10 @@ extension ArraySlice: SequenceOfString where Element == String {}
 extension ArraySlice: CollectionOfString where Element == String {}
 extension ArraySlice: SequenceOfOptionalString where Element == String? {}
 extension ArraySlice: CollectionOfOptionalString where Element == String? {}
+extension ArraySlice: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ArraySlice: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ArraySlice: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension ArraySlice: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension ArraySlice: SequenceOfSubstring where Element == Substring {}
 extension ArraySlice: CollectionOfSubstring where Element == Substring {}
 extension ArraySlice: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -289,6 +357,18 @@ extension ArraySlice: SequenceOfUInt8 where Element == UInt8 {}
 extension ArraySlice: CollectionOfUInt8 where Element == UInt8 {}
 extension ArraySlice: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension ArraySlice: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension ArraySlice: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ArraySlice: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ArraySlice: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ArraySlice: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ArraySlice: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ArraySlice: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ArraySlice: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ArraySlice: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ArraySlice: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ArraySlice: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ArraySlice: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension ArraySlice: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension ClosedRange: SequenceOfInt where Bound == Int {}
 extension ClosedRange: CollectionOfInt where Bound == Int {}
@@ -315,6 +395,10 @@ extension CollectionOfOne: SequenceOfBool where Element == Bool {}
 extension CollectionOfOne: CollectionOfBool where Element == Bool {}
 extension CollectionOfOne: SequenceOfOptionalBool where Element == Bool? {}
 extension CollectionOfOne: CollectionOfOptionalBool where Element == Bool? {}
+extension CollectionOfOne: SequenceOfCharacter where Element == Character {}
+extension CollectionOfOne: CollectionOfCharacter where Element == Character {}
+extension CollectionOfOne: SequenceOfOptionalCharacter where Element == Character? {}
+extension CollectionOfOne: CollectionOfOptionalCharacter where Element == Character? {}
 extension CollectionOfOne: SequenceOfDouble where Element == Double {}
 extension CollectionOfOne: CollectionOfDouble where Element == Double {}
 extension CollectionOfOne: SequenceOfOptionalDouble where Element == Double? {}
@@ -357,6 +441,10 @@ extension CollectionOfOne: SequenceOfString where Element == String {}
 extension CollectionOfOne: CollectionOfString where Element == String {}
 extension CollectionOfOne: SequenceOfOptionalString where Element == String? {}
 extension CollectionOfOne: CollectionOfOptionalString where Element == String? {}
+extension CollectionOfOne: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension CollectionOfOne: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension CollectionOfOne: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension CollectionOfOne: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension CollectionOfOne: SequenceOfSubstring where Element == Substring {}
 extension CollectionOfOne: CollectionOfSubstring where Element == Substring {}
 extension CollectionOfOne: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -381,11 +469,27 @@ extension CollectionOfOne: SequenceOfUInt8 where Element == UInt8 {}
 extension CollectionOfOne: CollectionOfUInt8 where Element == UInt8 {}
 extension CollectionOfOne: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension CollectionOfOne: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension CollectionOfOne: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension CollectionOfOne: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension CollectionOfOne: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension CollectionOfOne: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension CollectionOfOne: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension CollectionOfOne: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension CollectionOfOne: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension CollectionOfOne: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension CollectionOfOne: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension CollectionOfOne: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension CollectionOfOne: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension CollectionOfOne: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension ContiguousArray: SequenceOfBool where Element == Bool {}
 extension ContiguousArray: CollectionOfBool where Element == Bool {}
 extension ContiguousArray: SequenceOfOptionalBool where Element == Bool? {}
 extension ContiguousArray: CollectionOfOptionalBool where Element == Bool? {}
+extension ContiguousArray: SequenceOfCharacter where Element == Character {}
+extension ContiguousArray: CollectionOfCharacter where Element == Character {}
+extension ContiguousArray: SequenceOfOptionalCharacter where Element == Character? {}
+extension ContiguousArray: CollectionOfOptionalCharacter where Element == Character? {}
 extension ContiguousArray: SequenceOfDouble where Element == Double {}
 extension ContiguousArray: CollectionOfDouble where Element == Double {}
 extension ContiguousArray: SequenceOfOptionalDouble where Element == Double? {}
@@ -428,6 +532,10 @@ extension ContiguousArray: SequenceOfString where Element == String {}
 extension ContiguousArray: CollectionOfString where Element == String {}
 extension ContiguousArray: SequenceOfOptionalString where Element == String? {}
 extension ContiguousArray: CollectionOfOptionalString where Element == String? {}
+extension ContiguousArray: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ContiguousArray: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ContiguousArray: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension ContiguousArray: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension ContiguousArray: SequenceOfSubstring where Element == Substring {}
 extension ContiguousArray: CollectionOfSubstring where Element == Substring {}
 extension ContiguousArray: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -452,7 +560,21 @@ extension ContiguousArray: SequenceOfUInt8 where Element == UInt8 {}
 extension ContiguousArray: CollectionOfUInt8 where Element == UInt8 {}
 extension ContiguousArray: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension ContiguousArray: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension ContiguousArray: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ContiguousArray: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ContiguousArray: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ContiguousArray: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ContiguousArray: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ContiguousArray: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ContiguousArray: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ContiguousArray: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ContiguousArray: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ContiguousArray: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ContiguousArray: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension ContiguousArray: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
+extension DefaultIndices: SequenceOfCharacter where Element == Character {}
+extension DefaultIndices: CollectionOfCharacter where Element == Character {}
 extension DefaultIndices: SequenceOfDouble where Element == Double {}
 extension DefaultIndices: CollectionOfDouble where Element == Double {}
 extension DefaultIndices: SequenceOfFloat where Element == Float {}
@@ -473,6 +595,8 @@ extension DefaultIndices: SequenceOfInt8 where Element == Int8 {}
 extension DefaultIndices: CollectionOfInt8 where Element == Int8 {}
 extension DefaultIndices: SequenceOfString where Element == String {}
 extension DefaultIndices: CollectionOfString where Element == String {}
+extension DefaultIndices: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension DefaultIndices: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
 extension DefaultIndices: SequenceOfSubstring where Element == Substring {}
 extension DefaultIndices: CollectionOfSubstring where Element == Substring {}
 extension DefaultIndices: SequenceOfUInt where Element == UInt {}
@@ -485,11 +609,21 @@ extension DefaultIndices: SequenceOfUInt64 where Element == UInt64 {}
 extension DefaultIndices: CollectionOfUInt64 where Element == UInt64 {}
 extension DefaultIndices: SequenceOfUInt8 where Element == UInt8 {}
 extension DefaultIndices: CollectionOfUInt8 where Element == UInt8 {}
+extension DefaultIndices: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension DefaultIndices: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension DefaultIndices: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension DefaultIndices: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension DefaultIndices: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension DefaultIndices: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
 
 extension Dictionary.Keys: SequenceOfBool where Element == Bool {}
 extension Dictionary.Keys: CollectionOfBool where Element == Bool {}
 extension Dictionary.Keys: SequenceOfOptionalBool where Element == Bool? {}
 extension Dictionary.Keys: CollectionOfOptionalBool where Element == Bool? {}
+extension Dictionary.Keys: SequenceOfCharacter where Element == Character {}
+extension Dictionary.Keys: CollectionOfCharacter where Element == Character {}
+extension Dictionary.Keys: SequenceOfOptionalCharacter where Element == Character? {}
+extension Dictionary.Keys: CollectionOfOptionalCharacter where Element == Character? {}
 extension Dictionary.Keys: SequenceOfDouble where Element == Double {}
 extension Dictionary.Keys: CollectionOfDouble where Element == Double {}
 extension Dictionary.Keys: SequenceOfOptionalDouble where Element == Double? {}
@@ -528,6 +662,10 @@ extension Dictionary.Keys: SequenceOfString where Element == String {}
 extension Dictionary.Keys: CollectionOfString where Element == String {}
 extension Dictionary.Keys: SequenceOfOptionalString where Element == String? {}
 extension Dictionary.Keys: CollectionOfOptionalString where Element == String? {}
+extension Dictionary.Keys: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Dictionary.Keys: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Dictionary.Keys: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension Dictionary.Keys: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension Dictionary.Keys: SequenceOfSubstring where Element == Substring {}
 extension Dictionary.Keys: CollectionOfSubstring where Element == Substring {}
 extension Dictionary.Keys: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -552,11 +690,27 @@ extension Dictionary.Keys: SequenceOfUInt8 where Element == UInt8 {}
 extension Dictionary.Keys: CollectionOfUInt8 where Element == UInt8 {}
 extension Dictionary.Keys: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension Dictionary.Keys: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension Dictionary.Keys: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Dictionary.Keys: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Dictionary.Keys: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Dictionary.Keys: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Dictionary.Keys: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Dictionary.Keys: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Dictionary.Keys: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Dictionary.Keys: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Dictionary.Keys: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Dictionary.Keys: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Dictionary.Keys: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension Dictionary.Keys: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension Dictionary.Values: SequenceOfBool where Element == Bool {}
 extension Dictionary.Values: CollectionOfBool where Element == Bool {}
 extension Dictionary.Values: SequenceOfOptionalBool where Element == Bool? {}
 extension Dictionary.Values: CollectionOfOptionalBool where Element == Bool? {}
+extension Dictionary.Values: SequenceOfCharacter where Element == Character {}
+extension Dictionary.Values: CollectionOfCharacter where Element == Character {}
+extension Dictionary.Values: SequenceOfOptionalCharacter where Element == Character? {}
+extension Dictionary.Values: CollectionOfOptionalCharacter where Element == Character? {}
 extension Dictionary.Values: SequenceOfDouble where Element == Double {}
 extension Dictionary.Values: CollectionOfDouble where Element == Double {}
 extension Dictionary.Values: SequenceOfOptionalDouble where Element == Double? {}
@@ -599,6 +753,10 @@ extension Dictionary.Values: SequenceOfString where Element == String {}
 extension Dictionary.Values: CollectionOfString where Element == String {}
 extension Dictionary.Values: SequenceOfOptionalString where Element == String? {}
 extension Dictionary.Values: CollectionOfOptionalString where Element == String? {}
+extension Dictionary.Values: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Dictionary.Values: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Dictionary.Values: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension Dictionary.Values: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension Dictionary.Values: SequenceOfSubstring where Element == Substring {}
 extension Dictionary.Values: CollectionOfSubstring where Element == Substring {}
 extension Dictionary.Values: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -623,11 +781,27 @@ extension Dictionary.Values: SequenceOfUInt8 where Element == UInt8 {}
 extension Dictionary.Values: CollectionOfUInt8 where Element == UInt8 {}
 extension Dictionary.Values: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension Dictionary.Values: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension Dictionary.Values: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Dictionary.Values: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Dictionary.Values: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Dictionary.Values: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Dictionary.Values: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Dictionary.Values: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Dictionary.Values: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Dictionary.Values: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Dictionary.Values: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Dictionary.Values: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Dictionary.Values: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension Dictionary.Values: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension EmptyCollection: SequenceOfBool where Element == Bool {}
 extension EmptyCollection: CollectionOfBool where Element == Bool {}
 extension EmptyCollection: SequenceOfOptionalBool where Element == Bool? {}
 extension EmptyCollection: CollectionOfOptionalBool where Element == Bool? {}
+extension EmptyCollection: SequenceOfCharacter where Element == Character {}
+extension EmptyCollection: CollectionOfCharacter where Element == Character {}
+extension EmptyCollection: SequenceOfOptionalCharacter where Element == Character? {}
+extension EmptyCollection: CollectionOfOptionalCharacter where Element == Character? {}
 extension EmptyCollection: SequenceOfDouble where Element == Double {}
 extension EmptyCollection: CollectionOfDouble where Element == Double {}
 extension EmptyCollection: SequenceOfOptionalDouble where Element == Double? {}
@@ -670,6 +844,10 @@ extension EmptyCollection: SequenceOfString where Element == String {}
 extension EmptyCollection: CollectionOfString where Element == String {}
 extension EmptyCollection: SequenceOfOptionalString where Element == String? {}
 extension EmptyCollection: CollectionOfOptionalString where Element == String? {}
+extension EmptyCollection: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension EmptyCollection: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension EmptyCollection: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension EmptyCollection: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension EmptyCollection: SequenceOfSubstring where Element == Substring {}
 extension EmptyCollection: CollectionOfSubstring where Element == Substring {}
 extension EmptyCollection: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -694,11 +872,27 @@ extension EmptyCollection: SequenceOfUInt8 where Element == UInt8 {}
 extension EmptyCollection: CollectionOfUInt8 where Element == UInt8 {}
 extension EmptyCollection: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension EmptyCollection: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension EmptyCollection: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension EmptyCollection: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension EmptyCollection: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension EmptyCollection: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension EmptyCollection: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension EmptyCollection: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension EmptyCollection: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension EmptyCollection: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension EmptyCollection: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension EmptyCollection: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension EmptyCollection: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension EmptyCollection: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension ReversedCollection: SequenceOfBool where Element == Bool {}
 extension ReversedCollection: CollectionOfBool where Element == Bool {}
 extension ReversedCollection: SequenceOfOptionalBool where Element == Bool? {}
 extension ReversedCollection: CollectionOfOptionalBool where Element == Bool? {}
+extension ReversedCollection: SequenceOfCharacter where Element == Character {}
+extension ReversedCollection: CollectionOfCharacter where Element == Character {}
+extension ReversedCollection: SequenceOfOptionalCharacter where Element == Character? {}
+extension ReversedCollection: CollectionOfOptionalCharacter where Element == Character? {}
 extension ReversedCollection: SequenceOfDouble where Element == Double {}
 extension ReversedCollection: CollectionOfDouble where Element == Double {}
 extension ReversedCollection: SequenceOfOptionalDouble where Element == Double? {}
@@ -741,6 +935,10 @@ extension ReversedCollection: SequenceOfString where Element == String {}
 extension ReversedCollection: CollectionOfString where Element == String {}
 extension ReversedCollection: SequenceOfOptionalString where Element == String? {}
 extension ReversedCollection: CollectionOfOptionalString where Element == String? {}
+extension ReversedCollection: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ReversedCollection: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ReversedCollection: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension ReversedCollection: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension ReversedCollection: SequenceOfSubstring where Element == Substring {}
 extension ReversedCollection: CollectionOfSubstring where Element == Substring {}
 extension ReversedCollection: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -765,11 +963,27 @@ extension ReversedCollection: SequenceOfUInt8 where Element == UInt8 {}
 extension ReversedCollection: CollectionOfUInt8 where Element == UInt8 {}
 extension ReversedCollection: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension ReversedCollection: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension ReversedCollection: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ReversedCollection: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ReversedCollection: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ReversedCollection: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ReversedCollection: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ReversedCollection: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ReversedCollection: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ReversedCollection: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ReversedCollection: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ReversedCollection: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ReversedCollection: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension ReversedCollection: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension Set: SequenceOfBool where Element == Bool {}
 extension Set: CollectionOfBool where Element == Bool {}
 extension Set: SequenceOfOptionalBool where Element == Bool? {}
 extension Set: CollectionOfOptionalBool where Element == Bool? {}
+extension Set: SequenceOfCharacter where Element == Character {}
+extension Set: CollectionOfCharacter where Element == Character {}
+extension Set: SequenceOfOptionalCharacter where Element == Character? {}
+extension Set: CollectionOfOptionalCharacter where Element == Character? {}
 extension Set: SequenceOfDouble where Element == Double {}
 extension Set: CollectionOfDouble where Element == Double {}
 extension Set: SequenceOfOptionalDouble where Element == Double? {}
@@ -808,6 +1022,10 @@ extension Set: SequenceOfString where Element == String {}
 extension Set: CollectionOfString where Element == String {}
 extension Set: SequenceOfOptionalString where Element == String? {}
 extension Set: CollectionOfOptionalString where Element == String? {}
+extension Set: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Set: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Set: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension Set: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension Set: SequenceOfSubstring where Element == Substring {}
 extension Set: CollectionOfSubstring where Element == Substring {}
 extension Set: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -832,11 +1050,27 @@ extension Set: SequenceOfUInt8 where Element == UInt8 {}
 extension Set: CollectionOfUInt8 where Element == UInt8 {}
 extension Set: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension Set: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension Set: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Set: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Set: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Set: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Set: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Set: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Set: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Set: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Set: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Set: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Set: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension Set: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension Slice: SequenceOfBool where Element == Bool {}
 extension Slice: CollectionOfBool where Element == Bool {}
 extension Slice: SequenceOfOptionalBool where Element == Bool? {}
 extension Slice: CollectionOfOptionalBool where Element == Bool? {}
+extension Slice: SequenceOfCharacter where Element == Character {}
+extension Slice: CollectionOfCharacter where Element == Character {}
+extension Slice: SequenceOfOptionalCharacter where Element == Character? {}
+extension Slice: CollectionOfOptionalCharacter where Element == Character? {}
 extension Slice: SequenceOfDouble where Element == Double {}
 extension Slice: CollectionOfDouble where Element == Double {}
 extension Slice: SequenceOfOptionalDouble where Element == Double? {}
@@ -879,6 +1113,10 @@ extension Slice: SequenceOfString where Element == String {}
 extension Slice: CollectionOfString where Element == String {}
 extension Slice: SequenceOfOptionalString where Element == String? {}
 extension Slice: CollectionOfOptionalString where Element == String? {}
+extension Slice: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Slice: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension Slice: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension Slice: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension Slice: SequenceOfSubstring where Element == Substring {}
 extension Slice: CollectionOfSubstring where Element == Substring {}
 extension Slice: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -903,11 +1141,45 @@ extension Slice: SequenceOfUInt8 where Element == UInt8 {}
 extension Slice: CollectionOfUInt8 where Element == UInt8 {}
 extension Slice: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension Slice: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension Slice: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Slice: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension Slice: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Slice: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension Slice: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Slice: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension Slice: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Slice: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension Slice: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Slice: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension Slice: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension Slice: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+
+extension String: SequenceOfCharacter {}
+extension String: CollectionOfCharacter {}
+
+extension String.UTF16View: SequenceOfUTF16CodeUnit {}
+extension String.UTF16View: CollectionOfUTF16CodeUnit {}
+
+extension String.UTF8View: SequenceOfUTF8CodeUnit {}
+extension String.UTF8View: CollectionOfUTF8CodeUnit {}
+
+extension String.UnicodeScalarView: SequenceOfUnicodeScalar {}
+extension String.UnicodeScalarView: CollectionOfUnicodeScalar {}
+
+extension Substring.UTF16View: SequenceOfStringUTF16ViewElement {}
+extension Substring.UTF16View: CollectionOfStringUTF16ViewElement {}
+
+extension Substring.UnicodeScalarView: SequenceOfUnicodeScalar {}
+extension Substring.UnicodeScalarView: CollectionOfUnicodeScalar {}
 
 extension UnsafeMutableBufferPointer: SequenceOfBool where Element == Bool {}
 extension UnsafeMutableBufferPointer: CollectionOfBool where Element == Bool {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalBool where Element == Bool? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalBool where Element == Bool? {}
+extension UnsafeMutableBufferPointer: SequenceOfCharacter where Element == Character {}
+extension UnsafeMutableBufferPointer: CollectionOfCharacter where Element == Character {}
+extension UnsafeMutableBufferPointer: SequenceOfOptionalCharacter where Element == Character? {}
+extension UnsafeMutableBufferPointer: CollectionOfOptionalCharacter where Element == Character? {}
 extension UnsafeMutableBufferPointer: SequenceOfDouble where Element == Double {}
 extension UnsafeMutableBufferPointer: CollectionOfDouble where Element == Double {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalDouble where Element == Double? {}
@@ -950,6 +1222,10 @@ extension UnsafeMutableBufferPointer: SequenceOfString where Element == String {
 extension UnsafeMutableBufferPointer: CollectionOfString where Element == String {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalString where Element == String? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalString where Element == String? {}
+extension UnsafeMutableBufferPointer: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension UnsafeMutableBufferPointer: CollectionOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension UnsafeMutableBufferPointer: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
+extension UnsafeMutableBufferPointer: CollectionOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension UnsafeMutableBufferPointer: SequenceOfSubstring where Element == Substring {}
 extension UnsafeMutableBufferPointer: CollectionOfSubstring where Element == Substring {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalSubstring where Element == Substring? {}
@@ -974,12 +1250,26 @@ extension UnsafeMutableBufferPointer: SequenceOfUInt8 where Element == UInt8 {}
 extension UnsafeMutableBufferPointer: CollectionOfUInt8 where Element == UInt8 {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalUInt8 where Element == UInt8? {}
+extension UnsafeMutableBufferPointer: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension UnsafeMutableBufferPointer: CollectionOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension UnsafeMutableBufferPointer: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension UnsafeMutableBufferPointer: CollectionOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension UnsafeMutableBufferPointer: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension UnsafeMutableBufferPointer: CollectionOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension UnsafeMutableBufferPointer: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension UnsafeMutableBufferPointer: CollectionOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension UnsafeMutableBufferPointer: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension UnsafeMutableBufferPointer: CollectionOfUnicodeScalar where Element == Unicode.Scalar {}
+extension UnsafeMutableBufferPointer: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
+extension UnsafeMutableBufferPointer: CollectionOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension UnsafeMutableRawBufferPointer: SequenceOfUInt8 {}
 extension UnsafeMutableRawBufferPointer: CollectionOfUInt8 {}
 
 extension AnyIterator: SequenceOfBool where Element == Bool {}
 extension AnyIterator: SequenceOfOptionalBool where Element == Bool? {}
+extension AnyIterator: SequenceOfCharacter where Element == Character {}
+extension AnyIterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension AnyIterator: SequenceOfDouble where Element == Double {}
 extension AnyIterator: SequenceOfOptionalDouble where Element == Double? {}
 extension AnyIterator: SequenceOfError where Element == Error {}
@@ -1002,6 +1292,8 @@ extension AnyIterator: SequenceOfInt8 where Element == Int8 {}
 extension AnyIterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension AnyIterator: SequenceOfString where Element == String {}
 extension AnyIterator: SequenceOfOptionalString where Element == String? {}
+extension AnyIterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnyIterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension AnyIterator: SequenceOfSubstring where Element == Substring {}
 extension AnyIterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension AnyIterator: SequenceOfUInt where Element == UInt {}
@@ -1014,9 +1306,17 @@ extension AnyIterator: SequenceOfUInt64 where Element == UInt64 {}
 extension AnyIterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension AnyIterator: SequenceOfUInt8 where Element == UInt8 {}
 extension AnyIterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension AnyIterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnyIterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnyIterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnyIterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnyIterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnyIterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension AnySequence: SequenceOfBool where Element == Bool {}
 extension AnySequence: SequenceOfOptionalBool where Element == Bool? {}
+extension AnySequence: SequenceOfCharacter where Element == Character {}
+extension AnySequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension AnySequence: SequenceOfDouble where Element == Double {}
 extension AnySequence: SequenceOfOptionalDouble where Element == Double? {}
 extension AnySequence: SequenceOfError where Element == Error {}
@@ -1039,6 +1339,8 @@ extension AnySequence: SequenceOfInt8 where Element == Int8 {}
 extension AnySequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension AnySequence: SequenceOfString where Element == String {}
 extension AnySequence: SequenceOfOptionalString where Element == String? {}
+extension AnySequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension AnySequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension AnySequence: SequenceOfSubstring where Element == Substring {}
 extension AnySequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension AnySequence: SequenceOfUInt where Element == UInt {}
@@ -1051,9 +1353,17 @@ extension AnySequence: SequenceOfUInt64 where Element == UInt64 {}
 extension AnySequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension AnySequence: SequenceOfUInt8 where Element == UInt8 {}
 extension AnySequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension AnySequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension AnySequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension AnySequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension AnySequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension AnySequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension AnySequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension DropFirstSequence: SequenceOfBool where Element == Bool {}
 extension DropFirstSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension DropFirstSequence: SequenceOfCharacter where Element == Character {}
+extension DropFirstSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension DropFirstSequence: SequenceOfDouble where Element == Double {}
 extension DropFirstSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension DropFirstSequence: SequenceOfError where Element == Error {}
@@ -1076,6 +1386,8 @@ extension DropFirstSequence: SequenceOfInt8 where Element == Int8 {}
 extension DropFirstSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension DropFirstSequence: SequenceOfString where Element == String {}
 extension DropFirstSequence: SequenceOfOptionalString where Element == String? {}
+extension DropFirstSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension DropFirstSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension DropFirstSequence: SequenceOfSubstring where Element == Substring {}
 extension DropFirstSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension DropFirstSequence: SequenceOfUInt where Element == UInt {}
@@ -1088,9 +1400,17 @@ extension DropFirstSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension DropFirstSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension DropFirstSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension DropFirstSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension DropFirstSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension DropFirstSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension DropFirstSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension DropFirstSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension DropFirstSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension DropFirstSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension DropWhileSequence: SequenceOfBool where Element == Bool {}
 extension DropWhileSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension DropWhileSequence: SequenceOfCharacter where Element == Character {}
+extension DropWhileSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension DropWhileSequence: SequenceOfDouble where Element == Double {}
 extension DropWhileSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension DropWhileSequence: SequenceOfError where Element == Error {}
@@ -1113,6 +1433,8 @@ extension DropWhileSequence: SequenceOfInt8 where Element == Int8 {}
 extension DropWhileSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension DropWhileSequence: SequenceOfString where Element == String {}
 extension DropWhileSequence: SequenceOfOptionalString where Element == String? {}
+extension DropWhileSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension DropWhileSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension DropWhileSequence: SequenceOfSubstring where Element == Substring {}
 extension DropWhileSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension DropWhileSequence: SequenceOfUInt where Element == UInt {}
@@ -1125,9 +1447,17 @@ extension DropWhileSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension DropWhileSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension DropWhileSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension DropWhileSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension DropWhileSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension DropWhileSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension DropWhileSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension DropWhileSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension DropWhileSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension DropWhileSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension EmptyCollection.Iterator: SequenceOfBool where Element == Bool {}
 extension EmptyCollection.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension EmptyCollection.Iterator: SequenceOfCharacter where Element == Character {}
+extension EmptyCollection.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension EmptyCollection.Iterator: SequenceOfDouble where Element == Double {}
 extension EmptyCollection.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension EmptyCollection.Iterator: SequenceOfError where Element == Error {}
@@ -1150,6 +1480,8 @@ extension EmptyCollection.Iterator: SequenceOfInt8 where Element == Int8 {}
 extension EmptyCollection.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension EmptyCollection.Iterator: SequenceOfString where Element == String {}
 extension EmptyCollection.Iterator: SequenceOfOptionalString where Element == String? {}
+extension EmptyCollection.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension EmptyCollection.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension EmptyCollection.Iterator: SequenceOfSubstring where Element == Substring {}
 extension EmptyCollection.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension EmptyCollection.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1162,9 +1494,17 @@ extension EmptyCollection.Iterator: SequenceOfUInt64 where Element == UInt64 {}
 extension EmptyCollection.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension EmptyCollection.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension EmptyCollection.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension EmptyCollection.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension EmptyCollection.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension EmptyCollection.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension EmptyCollection.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension EmptyCollection.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension EmptyCollection.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension FlattenSequence: SequenceOfBool where Element == Bool {}
 extension FlattenSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension FlattenSequence: SequenceOfCharacter where Element == Character {}
+extension FlattenSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension FlattenSequence: SequenceOfDouble where Element == Double {}
 extension FlattenSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension FlattenSequence: SequenceOfError where Element == Error {}
@@ -1187,6 +1527,8 @@ extension FlattenSequence: SequenceOfInt8 where Element == Int8 {}
 extension FlattenSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension FlattenSequence: SequenceOfString where Element == String {}
 extension FlattenSequence: SequenceOfOptionalString where Element == String? {}
+extension FlattenSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension FlattenSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension FlattenSequence: SequenceOfSubstring where Element == Substring {}
 extension FlattenSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension FlattenSequence: SequenceOfUInt where Element == UInt {}
@@ -1199,9 +1541,17 @@ extension FlattenSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension FlattenSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension FlattenSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension FlattenSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension FlattenSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension FlattenSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension FlattenSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension FlattenSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension FlattenSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension FlattenSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension FlattenSequence.Iterator: SequenceOfBool where Element == Bool {}
 extension FlattenSequence.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension FlattenSequence.Iterator: SequenceOfCharacter where Element == Character {}
+extension FlattenSequence.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension FlattenSequence.Iterator: SequenceOfDouble where Element == Double {}
 extension FlattenSequence.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension FlattenSequence.Iterator: SequenceOfError where Element == Error {}
@@ -1224,6 +1574,8 @@ extension FlattenSequence.Iterator: SequenceOfInt8 where Element == Int8 {}
 extension FlattenSequence.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension FlattenSequence.Iterator: SequenceOfString where Element == String {}
 extension FlattenSequence.Iterator: SequenceOfOptionalString where Element == String? {}
+extension FlattenSequence.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension FlattenSequence.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension FlattenSequence.Iterator: SequenceOfSubstring where Element == Substring {}
 extension FlattenSequence.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension FlattenSequence.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1236,9 +1588,17 @@ extension FlattenSequence.Iterator: SequenceOfUInt64 where Element == UInt64 {}
 extension FlattenSequence.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension FlattenSequence.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension FlattenSequence.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension FlattenSequence.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension FlattenSequence.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension FlattenSequence.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension FlattenSequence.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension FlattenSequence.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension FlattenSequence.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension IndexingIterator: SequenceOfBool where Element == Bool {}
 extension IndexingIterator: SequenceOfOptionalBool where Element == Bool? {}
+extension IndexingIterator: SequenceOfCharacter where Element == Character {}
+extension IndexingIterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension IndexingIterator: SequenceOfDouble where Element == Double {}
 extension IndexingIterator: SequenceOfOptionalDouble where Element == Double? {}
 extension IndexingIterator: SequenceOfError where Element == Error {}
@@ -1261,6 +1621,8 @@ extension IndexingIterator: SequenceOfInt8 where Element == Int8 {}
 extension IndexingIterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension IndexingIterator: SequenceOfString where Element == String {}
 extension IndexingIterator: SequenceOfOptionalString where Element == String? {}
+extension IndexingIterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension IndexingIterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension IndexingIterator: SequenceOfSubstring where Element == Substring {}
 extension IndexingIterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension IndexingIterator: SequenceOfUInt where Element == UInt {}
@@ -1273,9 +1635,17 @@ extension IndexingIterator: SequenceOfUInt64 where Element == UInt64 {}
 extension IndexingIterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension IndexingIterator: SequenceOfUInt8 where Element == UInt8 {}
 extension IndexingIterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension IndexingIterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension IndexingIterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension IndexingIterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension IndexingIterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension IndexingIterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension IndexingIterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension JoinedSequence: SequenceOfBool where Element == Bool {}
 extension JoinedSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension JoinedSequence: SequenceOfCharacter where Element == Character {}
+extension JoinedSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension JoinedSequence: SequenceOfDouble where Element == Double {}
 extension JoinedSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension JoinedSequence: SequenceOfError where Element == Error {}
@@ -1298,6 +1668,8 @@ extension JoinedSequence: SequenceOfInt8 where Element == Int8 {}
 extension JoinedSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension JoinedSequence: SequenceOfString where Element == String {}
 extension JoinedSequence: SequenceOfOptionalString where Element == String? {}
+extension JoinedSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension JoinedSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension JoinedSequence: SequenceOfSubstring where Element == Substring {}
 extension JoinedSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension JoinedSequence: SequenceOfUInt where Element == UInt {}
@@ -1310,9 +1682,17 @@ extension JoinedSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension JoinedSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension JoinedSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension JoinedSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension JoinedSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension JoinedSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension JoinedSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension JoinedSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension JoinedSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension JoinedSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyDropWhileSequence: SequenceOfBool where Element == Bool {}
 extension LazyDropWhileSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyDropWhileSequence: SequenceOfCharacter where Element == Character {}
+extension LazyDropWhileSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyDropWhileSequence: SequenceOfDouble where Element == Double {}
 extension LazyDropWhileSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyDropWhileSequence: SequenceOfError where Element == Error {}
@@ -1335,6 +1715,8 @@ extension LazyDropWhileSequence: SequenceOfInt8 where Element == Int8 {}
 extension LazyDropWhileSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyDropWhileSequence: SequenceOfString where Element == String {}
 extension LazyDropWhileSequence: SequenceOfOptionalString where Element == String? {}
+extension LazyDropWhileSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyDropWhileSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyDropWhileSequence: SequenceOfSubstring where Element == Substring {}
 extension LazyDropWhileSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyDropWhileSequence: SequenceOfUInt where Element == UInt {}
@@ -1347,9 +1729,17 @@ extension LazyDropWhileSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension LazyDropWhileSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyDropWhileSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyDropWhileSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyDropWhileSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyDropWhileSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyDropWhileSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyDropWhileSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyDropWhileSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyDropWhileSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyFilterSequence: SequenceOfBool where Element == Bool {}
 extension LazyFilterSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyFilterSequence: SequenceOfCharacter where Element == Character {}
+extension LazyFilterSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyFilterSequence: SequenceOfDouble where Element == Double {}
 extension LazyFilterSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyFilterSequence: SequenceOfError where Element == Error {}
@@ -1372,6 +1762,8 @@ extension LazyFilterSequence: SequenceOfInt8 where Element == Int8 {}
 extension LazyFilterSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyFilterSequence: SequenceOfString where Element == String {}
 extension LazyFilterSequence: SequenceOfOptionalString where Element == String? {}
+extension LazyFilterSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyFilterSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyFilterSequence: SequenceOfSubstring where Element == Substring {}
 extension LazyFilterSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyFilterSequence: SequenceOfUInt where Element == UInt {}
@@ -1384,9 +1776,17 @@ extension LazyFilterSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension LazyFilterSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyFilterSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyFilterSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyFilterSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyFilterSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyFilterSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyFilterSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyFilterSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyFilterSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyFilterSequence.Iterator: SequenceOfBool where Element == Bool {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyFilterSequence.Iterator: SequenceOfCharacter where Element == Character {}
+extension LazyFilterSequence.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyFilterSequence.Iterator: SequenceOfDouble where Element == Double {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyFilterSequence.Iterator: SequenceOfError where Element == Error {}
@@ -1409,6 +1809,8 @@ extension LazyFilterSequence.Iterator: SequenceOfInt8 where Element == Int8 {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyFilterSequence.Iterator: SequenceOfString where Element == String {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalString where Element == String? {}
+extension LazyFilterSequence.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyFilterSequence.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyFilterSequence.Iterator: SequenceOfSubstring where Element == Substring {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyFilterSequence.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1421,9 +1823,17 @@ extension LazyFilterSequence.Iterator: SequenceOfUInt64 where Element == UInt64 
 extension LazyFilterSequence.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyFilterSequence.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyFilterSequence.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyFilterSequence.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyFilterSequence.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyFilterSequence.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyFilterSequence.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyFilterSequence.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyMapSequence: SequenceOfBool where Element == Bool {}
 extension LazyMapSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyMapSequence: SequenceOfCharacter where Element == Character {}
+extension LazyMapSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyMapSequence: SequenceOfDouble where Element == Double {}
 extension LazyMapSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyMapSequence: SequenceOfError where Element == Error {}
@@ -1446,6 +1856,8 @@ extension LazyMapSequence: SequenceOfInt8 where Element == Int8 {}
 extension LazyMapSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyMapSequence: SequenceOfString where Element == String {}
 extension LazyMapSequence: SequenceOfOptionalString where Element == String? {}
+extension LazyMapSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyMapSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyMapSequence: SequenceOfSubstring where Element == Substring {}
 extension LazyMapSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyMapSequence: SequenceOfUInt where Element == UInt {}
@@ -1458,9 +1870,17 @@ extension LazyMapSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension LazyMapSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyMapSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyMapSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyMapSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyMapSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyMapSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyMapSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyMapSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyMapSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyMapSequence.Iterator: SequenceOfBool where Element == Bool {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyMapSequence.Iterator: SequenceOfCharacter where Element == Character {}
+extension LazyMapSequence.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyMapSequence.Iterator: SequenceOfDouble where Element == Double {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyMapSequence.Iterator: SequenceOfError where Element == Error {}
@@ -1483,6 +1903,8 @@ extension LazyMapSequence.Iterator: SequenceOfInt8 where Element == Int8 {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyMapSequence.Iterator: SequenceOfString where Element == String {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalString where Element == String? {}
+extension LazyMapSequence.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyMapSequence.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyMapSequence.Iterator: SequenceOfSubstring where Element == Substring {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyMapSequence.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1495,9 +1917,17 @@ extension LazyMapSequence.Iterator: SequenceOfUInt64 where Element == UInt64 {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyMapSequence.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyMapSequence.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyMapSequence.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyMapSequence.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyMapSequence.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyMapSequence.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyMapSequence.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyPrefixWhileSequence: SequenceOfBool where Element == Bool {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyPrefixWhileSequence: SequenceOfCharacter where Element == Character {}
+extension LazyPrefixWhileSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyPrefixWhileSequence: SequenceOfDouble where Element == Double {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyPrefixWhileSequence: SequenceOfError where Element == Error {}
@@ -1520,6 +1950,8 @@ extension LazyPrefixWhileSequence: SequenceOfInt8 where Element == Int8 {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyPrefixWhileSequence: SequenceOfString where Element == String {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalString where Element == String? {}
+extension LazyPrefixWhileSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyPrefixWhileSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyPrefixWhileSequence: SequenceOfSubstring where Element == Substring {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyPrefixWhileSequence: SequenceOfUInt where Element == UInt {}
@@ -1532,9 +1964,17 @@ extension LazyPrefixWhileSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyPrefixWhileSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyPrefixWhileSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyPrefixWhileSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyPrefixWhileSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyPrefixWhileSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyPrefixWhileSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyPrefixWhileSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazyPrefixWhileSequence.Iterator: SequenceOfBool where Element == Bool {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfCharacter where Element == Character {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfDouble where Element == Double {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfError where Element == Error {}
@@ -1557,6 +1997,8 @@ extension LazyPrefixWhileSequence.Iterator: SequenceOfInt8 where Element == Int8
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfString where Element == String {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalString where Element == String? {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfSubstring where Element == Substring {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1569,9 +2011,17 @@ extension LazyPrefixWhileSequence.Iterator: SequenceOfUInt64 where Element == UI
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension LazySequence: SequenceOfBool where Element == Bool {}
 extension LazySequence: SequenceOfOptionalBool where Element == Bool? {}
+extension LazySequence: SequenceOfCharacter where Element == Character {}
+extension LazySequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension LazySequence: SequenceOfDouble where Element == Double {}
 extension LazySequence: SequenceOfOptionalDouble where Element == Double? {}
 extension LazySequence: SequenceOfError where Element == Error {}
@@ -1594,6 +2044,8 @@ extension LazySequence: SequenceOfInt8 where Element == Int8 {}
 extension LazySequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension LazySequence: SequenceOfString where Element == String {}
 extension LazySequence: SequenceOfOptionalString where Element == String? {}
+extension LazySequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension LazySequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension LazySequence: SequenceOfSubstring where Element == Substring {}
 extension LazySequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension LazySequence: SequenceOfUInt where Element == UInt {}
@@ -1606,6 +2058,12 @@ extension LazySequence: SequenceOfUInt64 where Element == UInt64 {}
 extension LazySequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazySequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazySequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension LazySequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension LazySequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension LazySequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension LazySequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension LazySequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension LazySequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension PartialRangeFrom: SequenceOfInt where Bound == Int {}
 extension PartialRangeFrom: SequenceOfInt16 where Bound == Int16 {}
@@ -1620,6 +2078,8 @@ extension PartialRangeFrom: SequenceOfUInt8 where Bound == UInt8 {}
 
 extension PrefixSequence: SequenceOfBool where Element == Bool {}
 extension PrefixSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension PrefixSequence: SequenceOfCharacter where Element == Character {}
+extension PrefixSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension PrefixSequence: SequenceOfDouble where Element == Double {}
 extension PrefixSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension PrefixSequence: SequenceOfError where Element == Error {}
@@ -1642,6 +2102,8 @@ extension PrefixSequence: SequenceOfInt8 where Element == Int8 {}
 extension PrefixSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension PrefixSequence: SequenceOfString where Element == String {}
 extension PrefixSequence: SequenceOfOptionalString where Element == String? {}
+extension PrefixSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension PrefixSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension PrefixSequence: SequenceOfSubstring where Element == Substring {}
 extension PrefixSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension PrefixSequence: SequenceOfUInt where Element == UInt {}
@@ -1654,6 +2116,12 @@ extension PrefixSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension PrefixSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension PrefixSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension PrefixSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension PrefixSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension PrefixSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension PrefixSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension PrefixSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension PrefixSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension PrefixSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension Range: SequenceOfInt where Bound == Int {}
 extension Range: SequenceOfInt16 where Bound == Int16 {}
@@ -1668,6 +2136,8 @@ extension Range: SequenceOfUInt8 where Bound == UInt8 {}
 
 extension ReversedCollection.Iterator: SequenceOfBool where Element == Bool {}
 extension ReversedCollection.Iterator: SequenceOfOptionalBool where Element == Bool? {}
+extension ReversedCollection.Iterator: SequenceOfCharacter where Element == Character {}
+extension ReversedCollection.Iterator: SequenceOfOptionalCharacter where Element == Character? {}
 extension ReversedCollection.Iterator: SequenceOfDouble where Element == Double {}
 extension ReversedCollection.Iterator: SequenceOfOptionalDouble where Element == Double? {}
 extension ReversedCollection.Iterator: SequenceOfError where Element == Error {}
@@ -1690,6 +2160,8 @@ extension ReversedCollection.Iterator: SequenceOfInt8 where Element == Int8 {}
 extension ReversedCollection.Iterator: SequenceOfOptionalInt8 where Element == Int8? {}
 extension ReversedCollection.Iterator: SequenceOfString where Element == String {}
 extension ReversedCollection.Iterator: SequenceOfOptionalString where Element == String? {}
+extension ReversedCollection.Iterator: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension ReversedCollection.Iterator: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension ReversedCollection.Iterator: SequenceOfSubstring where Element == Substring {}
 extension ReversedCollection.Iterator: SequenceOfOptionalSubstring where Element == Substring? {}
 extension ReversedCollection.Iterator: SequenceOfUInt where Element == UInt {}
@@ -1702,6 +2174,12 @@ extension ReversedCollection.Iterator: SequenceOfUInt64 where Element == UInt64 
 extension ReversedCollection.Iterator: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension ReversedCollection.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension ReversedCollection.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension ReversedCollection.Iterator: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension ReversedCollection.Iterator: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension ReversedCollection.Iterator: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension ReversedCollection.Iterator: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension ReversedCollection.Iterator: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension ReversedCollection.Iterator: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension StrideThrough: SequenceOfDouble where Element == Double {}
 extension StrideThrough: SequenceOfFloat where Element == Float {}
@@ -1713,11 +2191,14 @@ extension StrideThrough: SequenceOfInt16 where Element == Int16 {}
 extension StrideThrough: SequenceOfInt32 where Element == Int32 {}
 extension StrideThrough: SequenceOfInt64 where Element == Int64 {}
 extension StrideThrough: SequenceOfInt8 where Element == Int8 {}
+extension StrideThrough: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
 extension StrideThrough: SequenceOfUInt where Element == UInt {}
 extension StrideThrough: SequenceOfUInt16 where Element == UInt16 {}
 extension StrideThrough: SequenceOfUInt32 where Element == UInt32 {}
 extension StrideThrough: SequenceOfUInt64 where Element == UInt64 {}
 extension StrideThrough: SequenceOfUInt8 where Element == UInt8 {}
+extension StrideThrough: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension StrideThrough: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
 
 extension StrideTo: SequenceOfDouble where Element == Double {}
 extension StrideTo: SequenceOfFloat where Element == Float {}
@@ -1729,14 +2210,19 @@ extension StrideTo: SequenceOfInt16 where Element == Int16 {}
 extension StrideTo: SequenceOfInt32 where Element == Int32 {}
 extension StrideTo: SequenceOfInt64 where Element == Int64 {}
 extension StrideTo: SequenceOfInt8 where Element == Int8 {}
+extension StrideTo: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
 extension StrideTo: SequenceOfUInt where Element == UInt {}
 extension StrideTo: SequenceOfUInt16 where Element == UInt16 {}
 extension StrideTo: SequenceOfUInt32 where Element == UInt32 {}
 extension StrideTo: SequenceOfUInt64 where Element == UInt64 {}
 extension StrideTo: SequenceOfUInt8 where Element == UInt8 {}
+extension StrideTo: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension StrideTo: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
 
 extension UnfoldSequence: SequenceOfBool where Element == Bool {}
 extension UnfoldSequence: SequenceOfOptionalBool where Element == Bool? {}
+extension UnfoldSequence: SequenceOfCharacter where Element == Character {}
+extension UnfoldSequence: SequenceOfOptionalCharacter where Element == Character? {}
 extension UnfoldSequence: SequenceOfDouble where Element == Double {}
 extension UnfoldSequence: SequenceOfOptionalDouble where Element == Double? {}
 extension UnfoldSequence: SequenceOfError where Element == Error {}
@@ -1759,6 +2245,8 @@ extension UnfoldSequence: SequenceOfInt8 where Element == Int8 {}
 extension UnfoldSequence: SequenceOfOptionalInt8 where Element == Int8? {}
 extension UnfoldSequence: SequenceOfString where Element == String {}
 extension UnfoldSequence: SequenceOfOptionalString where Element == String? {}
+extension UnfoldSequence: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension UnfoldSequence: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension UnfoldSequence: SequenceOfSubstring where Element == Substring {}
 extension UnfoldSequence: SequenceOfOptionalSubstring where Element == Substring? {}
 extension UnfoldSequence: SequenceOfUInt where Element == UInt {}
@@ -1771,9 +2259,17 @@ extension UnfoldSequence: SequenceOfUInt64 where Element == UInt64 {}
 extension UnfoldSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension UnfoldSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension UnfoldSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension UnfoldSequence: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension UnfoldSequence: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension UnfoldSequence: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension UnfoldSequence: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension UnfoldSequence: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension UnfoldSequence: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension UnsafeBufferPointer: SequenceOfBool where Element == Bool {}
 extension UnsafeBufferPointer: SequenceOfOptionalBool where Element == Bool? {}
+extension UnsafeBufferPointer: SequenceOfCharacter where Element == Character {}
+extension UnsafeBufferPointer: SequenceOfOptionalCharacter where Element == Character? {}
 extension UnsafeBufferPointer: SequenceOfDouble where Element == Double {}
 extension UnsafeBufferPointer: SequenceOfOptionalDouble where Element == Double? {}
 extension UnsafeBufferPointer: SequenceOfError where Element == Error {}
@@ -1796,6 +2292,8 @@ extension UnsafeBufferPointer: SequenceOfInt8 where Element == Int8 {}
 extension UnsafeBufferPointer: SequenceOfOptionalInt8 where Element == Int8? {}
 extension UnsafeBufferPointer: SequenceOfString where Element == String {}
 extension UnsafeBufferPointer: SequenceOfOptionalString where Element == String? {}
+extension UnsafeBufferPointer: SequenceOfStringUTF16ViewElement where Element == String.UTF16View.Element {}
+extension UnsafeBufferPointer: SequenceOfOptionalStringUTF16ViewElement where Element == String.UTF16View.Element? {}
 extension UnsafeBufferPointer: SequenceOfSubstring where Element == Substring {}
 extension UnsafeBufferPointer: SequenceOfOptionalSubstring where Element == Substring? {}
 extension UnsafeBufferPointer: SequenceOfUInt where Element == UInt {}
@@ -1808,5 +2306,11 @@ extension UnsafeBufferPointer: SequenceOfUInt64 where Element == UInt64 {}
 extension UnsafeBufferPointer: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension UnsafeBufferPointer: SequenceOfUInt8 where Element == UInt8 {}
 extension UnsafeBufferPointer: SequenceOfOptionalUInt8 where Element == UInt8? {}
+extension UnsafeBufferPointer: SequenceOfUTF16CodeUnit where Element == UTF16.CodeUnit {}
+extension UnsafeBufferPointer: SequenceOfOptionalUTF16CodeUnit where Element == UTF16.CodeUnit? {}
+extension UnsafeBufferPointer: SequenceOfUTF8CodeUnit where Element == UTF8.CodeUnit {}
+extension UnsafeBufferPointer: SequenceOfOptionalUTF8CodeUnit where Element == UTF8.CodeUnit? {}
+extension UnsafeBufferPointer: SequenceOfUnicodeScalar where Element == Unicode.Scalar {}
+extension UnsafeBufferPointer: SequenceOfOptionalUnicodeScalar where Element == Unicode.Scalar? {}
 
 extension UnsafeMutableRawBufferPointer.Iterator: SequenceOfUInt8 {}

@@ -10,6 +10,11 @@ public protocol CollectionOfBool: Collection, SequenceOfBool {}
 public protocol SequenceOfOptionalBool: Sequence where Element == Bool? {}
 public protocol CollectionOfOptionalBool: Collection, SequenceOfOptionalBool {}
 
+public protocol SequenceOfCharacter: Sequence where Element == Character {}
+public protocol CollectionOfCharacter: Collection, SequenceOfCharacter {}
+public protocol SequenceOfOptionalCharacter: Sequence where Element == Character? {}
+public protocol CollectionOfOptionalCharacter: Collection, SequenceOfOptionalCharacter {}
+
 public protocol SequenceOfDouble: Sequence where Element == Double {}
 public protocol CollectionOfDouble: Collection, SequenceOfDouble {}
 public protocol SequenceOfOptionalDouble: Sequence where Element == Double? {}
@@ -62,6 +67,11 @@ public protocol CollectionOfString: Collection, SequenceOfString {}
 public protocol SequenceOfOptionalString: Sequence where Element == String? {}
 public protocol CollectionOfOptionalString: Collection, SequenceOfOptionalString {}
 
+public protocol SequenceOfStringUTF16ViewElement: Sequence where Element == String.UTF16View.Element {}
+public protocol CollectionOfStringUTF16ViewElement: Collection, SequenceOfStringUTF16ViewElement {}
+public protocol SequenceOfOptionalStringUTF16ViewElement: Sequence where Element == String.UTF16View.Element? {}
+public protocol CollectionOfOptionalStringUTF16ViewElement: Collection, SequenceOfOptionalStringUTF16ViewElement {}
+
 public protocol SequenceOfSubstring: Sequence where Element == Substring {}
 public protocol CollectionOfSubstring: Collection, SequenceOfSubstring {}
 public protocol SequenceOfOptionalSubstring: Sequence where Element == Substring? {}
@@ -91,4 +101,19 @@ public protocol SequenceOfUInt8: Sequence where Element == UInt8 {}
 public protocol CollectionOfUInt8: Collection, SequenceOfUInt8 {}
 public protocol SequenceOfOptionalUInt8: Sequence where Element == UInt8? {}
 public protocol CollectionOfOptionalUInt8: Collection, SequenceOfOptionalUInt8 {}
+
+public protocol SequenceOfUTF16CodeUnit: Sequence where Element == UTF16.CodeUnit {}
+public protocol CollectionOfUTF16CodeUnit: Collection, SequenceOfUTF16CodeUnit {}
+public protocol SequenceOfOptionalUTF16CodeUnit: Sequence where Element == UTF16.CodeUnit? {}
+public protocol CollectionOfOptionalUTF16CodeUnit: Collection, SequenceOfOptionalUTF16CodeUnit {}
+
+public protocol SequenceOfUTF8CodeUnit: Sequence where Element == UTF8.CodeUnit {}
+public protocol CollectionOfUTF8CodeUnit: Collection, SequenceOfUTF8CodeUnit {}
+public protocol SequenceOfOptionalUTF8CodeUnit: Sequence where Element == UTF8.CodeUnit? {}
+public protocol CollectionOfOptionalUTF8CodeUnit: Collection, SequenceOfOptionalUTF8CodeUnit {}
+
+public protocol SequenceOfUnicodeScalar: Sequence where Element == Unicode.Scalar {}
+public protocol CollectionOfUnicodeScalar: Collection, SequenceOfUnicodeScalar {}
+public protocol SequenceOfOptionalUnicodeScalar: Sequence where Element == Unicode.Scalar? {}
+public protocol CollectionOfOptionalUnicodeScalar: Collection, SequenceOfOptionalUnicodeScalar {}
 
