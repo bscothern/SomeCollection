@@ -69,41 +69,39 @@ public struct Generator {
         //
 
         """
-        matrix.elementTypes
-            .sorted()
-            .forEach { elementType in
-                guard generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })  else {
-                    return
-                }
-
-                protocols += "\n"
-                let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
-                if isRestricted {
-                    protocols += "#if"
-                    elementType.applicablePlatforms
-                        .sorted()
-                        .forEach { platform in
-                            protocols += " os(\(platform.rawValue))"
-                        }
-                    protocols += "\n"
-                }
-
-                protocols += """
-                public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
-                public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
-                public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
-                public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
-                public protocol Lazy\(elementType.sequenceName): LazySequenceProtocol, \(elementType.sequenceName) {}
-                public protocol Lazy\(elementType.collectionName): LazyCollectionProtocol, \(elementType.collectionName) {}
-                public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
-                public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
-                """
-
-                if isRestricted {
-                    protocols += "\n#endif"
+        matrix.elementTypes.forEach { elementType in
+            guard generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })  else {
+                return
+            }
+            
+            protocols += "\n"
+            let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+            if isRestricted {
+                protocols += "#if"
+                elementType.applicablePlatforms
+                    .sorted()
+                    .forEach { platform in
+                        protocols += " os(\(platform.rawValue))"
                 }
                 protocols += "\n"
             }
+            
+            protocols += """
+            public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
+            public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
+            public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
+            public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
+            public protocol Lazy\(elementType.sequenceName): LazySequenceProtocol, \(elementType.sequenceName) {}
+            public protocol Lazy\(elementType.collectionName): LazyCollectionProtocol, \(elementType.collectionName) {}
+            public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
+            public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
+            """
+            
+            if isRestricted {
+                protocols += "\n#endif"
+            }
+            protocols += "\n"
+        }
 
         try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
     }
@@ -125,12 +123,11 @@ public struct Generator {
         try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
     }
 
-    private func generateConformances(for set: Set<SequenceType>, isCollectionTypes: Bool, appendingTo conformances: inout String) {
-        set.sorted()
+    private func generateConformances(for sequenceTypes: [SequenceType], isCollectionTypes: Bool, appendingTo conformances: inout String) {
+        sequenceTypes
             .forEach { sequenceType in
                 var added = false
                 matrix.elementTypes
-                    .sorted()
                     .lazy
                     .filter { sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains($0) }
                     .filter { !sequenceType.excludedElementTypes.contains($0) }
@@ -154,63 +151,42 @@ public struct Generator {
                                     conformances += " os(\(platform.rawValue))"
                                 }
                         }
-
-                        if sequenceType.skipWhereClause {
-                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) {}"
-
-                            if isCollectionTypes {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) {}"
-                            }
-
-                            if !sequenceType.skipOptional {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) {}"
-                                if isCollectionTypes {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) {}"
-                                }
-                            }
-                        } else {
-                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.genericName) == \(elementType.name) {}"
-                            if isCollectionTypes {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) where \(sequenceType.genericName) == \(elementType.name) {}"
-                            }
-
-                            if !sequenceType.skipOptional {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
-                                if isCollectionTypes {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
-                                }
-                            }
-                        }
                         
+                        var conformancesToApply: [String] = []
+                        var whereClause: String {
+                            sequenceType.skipWhereClause ? "" : " where \(sequenceType.genericName) == \(elementType.name)"
+                        }
+
+                        conformancesToApply.append("\(elementType.sequenceName)\(whereClause)")
+                        if isCollectionTypes {
+                            conformancesToApply.append("\(elementType.collectionName)\(whereClause)")
+                        }
+
+                        if !sequenceType.skipOptional {
+                            conformancesToApply.append("\(elementType.sequenceNameOptional)\(whereClause)?")
+                            if isCollectionTypes {
+                                conformancesToApply.append("\(elementType.collectionNameOptional)\(whereClause)?")
+                            }
+                        }
+
                         if sequenceType.isLazy {
-                            if sequenceType.skipWhereClause {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceName) {}"
-
-                                if isCollectionTypes {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionName) {}"
-                                }
-
-                                if !sequenceType.skipOptional {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceNameOptional) {}"
-                                    if isCollectionTypes {
-                                        conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionNameOptional) {}"
-                                    }
-                                }
-                            } else {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceName) where \(sequenceType.genericName) == \(elementType.name) {}"
-                                if isCollectionTypes {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionName) where \(sequenceType.genericName) == \(elementType.name) {}"
-                                }
-
-                                if !sequenceType.skipOptional {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.lazySequenceNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
-                                    if isCollectionTypes {
-                                        conformances += "\nextension \(sequenceType.name): \(elementType.lazyCollectionNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
-                                    }
-                                }
+                            conformancesToApply.append("\(elementType.lazySequenceName)\(whereClause)")
+                            if isCollectionTypes {
+                                conformancesToApply.append("\(elementType.lazyCollectionName)\(whereClause)")
                             }
 
+                            if !sequenceType.skipOptional {
+                                conformancesToApply.append("\(elementType.lazySequenceNameOptional)\(whereClause)?")
+                                if isCollectionTypes {
+                                    conformancesToApply.append("\(elementType.lazyCollectionNameOptional)\(whereClause)?")
+                                }
+                            }
                         }
+
+                        conformancesToApply.forEach {
+                            conformances += "\nextension \(sequenceType.name): \($0) {}"
+                        }
+                            
 
                         if isRestricted {
                             conformances += "\n#endif"
@@ -231,9 +207,9 @@ fileprivate extension ElementType {
     var sequenceNameOptional: String { "SequenceOfOptional\(simpleName)" }
     var collectionNameOptional: String { "CollectionOfOptional\(simpleName)" }
     
-    var lazySequenceName: String { "LazySequenceOf\(simpleName)" }
-    var lazyCollectionName: String { "LazyCollectionOf\(simpleName)" }
+    var lazySequenceName: String { "Lazy\(sequenceName)" }
+    var lazyCollectionName: String { "Lazy\(collectionName)" }
 
-    var lazySequenceNameOptional: String { "LazySequenceOfOptional\(simpleName)" }
-    var lazyCollectionNameOptional: String { "LazyCollectionOfOptional\(simpleName)" }
+    var lazySequenceNameOptional: String { "Lazy\(sequenceNameOptional)" }
+    var lazyCollectionNameOptional: String { "Lazy\(collectionNameOptional)" }
 }
