@@ -72,6 +72,10 @@ public struct Generator {
         matrix.elementTypes
             .sorted()
             .forEach { elementType in
+                guard generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })  else {
+                    return
+                }
+
                 protocols += "\n"
                 let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
                 if isRestricted {
@@ -126,6 +130,11 @@ public struct Generator {
                     .sorted().lazy
                     .filter { collectionType.limitedToElementTypes.isEmpty || collectionType.limitedToElementTypes.contains($0) }
                     .filter { !collectionType.excludedElementTypes.contains($0) }
+                    .filter { elementType in
+                        // This allows either the CollectionType or the ElementType to be part of the standard library while the other isn't.
+                        // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
+                        self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) || !StandardLibraryCollectionType.values.contains(where: { $0.name == collectionType.name })
+                    }
                     .forEach { elementType in
                         added = true
 
