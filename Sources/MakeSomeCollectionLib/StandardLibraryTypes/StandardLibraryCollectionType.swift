@@ -17,7 +17,7 @@ public enum StandardLibraryCollectionType {
         .init(name: "ClosedRange", limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"], skipOptional: true, generic: "Bound"),
         .init(name: "DefaultIndices", excluding: ["Bool", "Error"], skipOptional: true),
 //        .init(name: "Dictionary", keyOrValue: .both),
-//        .init(name: "Dictionary.Keys", keyOrValue: .key),
+        .init(name: "Dictionary.Keys", excluding: ["Error"]),
         .init(name: "Set", excluding: ["Error"]),
         "Slice",
         
@@ -37,7 +37,7 @@ public enum StandardLibraryCollectionType {
         "ArraySlice",
         "CollectionOfOne",
         "ContiguousArray",
-        .init(name: "Dictionary.Values", keyOrValue: .value),
+        "Dictionary.Values",
         "EmptyCollection",
         "UnsafeMutableBufferPointer",
         .init(name: "UnsafeMutableRawBufferPointer", limitedTo: ["UInt8"], skipWhereClause: true, skipOptional: true),
