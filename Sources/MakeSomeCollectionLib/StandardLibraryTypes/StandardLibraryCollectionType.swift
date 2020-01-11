@@ -7,7 +7,6 @@
 //
 
 public enum StandardLibraryCollectionType {
-    
     /// All the Generic Standard Library Collection Types and their restrictions within the standard library to conform to SequenceOf/CollectionOf protocols.
     ///
     /// - Note: `CollectionDifference` is not generic.

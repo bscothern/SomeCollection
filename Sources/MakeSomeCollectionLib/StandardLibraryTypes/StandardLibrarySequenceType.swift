@@ -7,6 +7,7 @@
 //
 
 public enum StandardLibrarySequenceType {
+    /// All the generic Sequence types in the standard library.
     public static let values: Set<SequenceType> = {
         let sequenceTypes: Set<SequenceType> = [
             // Sequence Types
@@ -38,7 +39,7 @@ public enum StandardLibrarySequenceType {
             "UnsafeBufferPointer",
             .init(name: "UnsafeMutableRawBufferPointer.Iterator", limitedTo: ["UInt8"], skipWhereClause: true, skipOptional: true),
 //            "Zip2Sequence",
-            
+
             // LazySequenceProtocol Types
             "LazyDropWhileSequence",
             "LazyFilterSequence",
