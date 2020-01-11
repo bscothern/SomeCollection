@@ -13,16 +13,16 @@ public struct SequenceType: Hashable {
     @usableFromInline let excludedElementTypes: Set<ElementType>
     @usableFromInline let skipWhereClause: Bool
     @usableFromInline let skipOptional: Bool
-    @usableFromInline let generic: String
+    @usableFromInline let genericName: String
 
     @inlinable
-    public init(name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, generic: String = "Element") {
+    public init(_ name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, genericName: String = "Element") {
         self.name = name
         self.limitedToElementTypes = limitedToElementTypes
         self.excludedElementTypes = excludedElementTypes
         self.skipWhereClause = skipWhereClause
         self.skipOptional = skipOptional
-        self.generic = generic
+        self.genericName = genericName
     }
 }
 
@@ -35,6 +35,6 @@ extension SequenceType: Comparable {
 extension SequenceType: ExpressibleByStringLiteral {
     @inlinable
     public init(stringLiteral: String) {
-        self.init(name: stringLiteral)
+        self.init(stringLiteral)
     }
 }

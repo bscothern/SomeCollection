@@ -22,7 +22,10 @@ public enum StandardLibraryElementType {
 
         "Float",
         "Double",
-        .init(name: "Float80", restrictedTo: [.macOS]),
+        .init(
+            "Float80",
+            restrictedTo: [.macOS]
+        ),
 
         "String",
         "Substring",

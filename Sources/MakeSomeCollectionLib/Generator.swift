@@ -76,6 +76,7 @@ public struct Generator {
                     return
                 }
 
+                protocols += "\n"
                 let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
                 if isRestricted {
                     protocols += "#if"
@@ -97,7 +98,7 @@ public struct Generator {
                 if isRestricted {
                     protocols += "\n#endif"
                 }
-                protocols += "\n\n"
+                protocols += "\n"
             }
 
         try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
@@ -164,15 +165,15 @@ public struct Generator {
                                 }
                             }
                         } else {
-                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.generic) == \(elementType.name) {}"
+                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.genericName) == \(elementType.name) {}"
                             if isCollectionTypes {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) where \(sequenceType.generic) == \(elementType.name) {}"
+                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) where \(sequenceType.genericName) == \(elementType.name) {}"
                             }
 
                             if !sequenceType.skipOptional {
-                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}"
+                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
                                 if isCollectionTypes {
-                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}"
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) where \(sequenceType.genericName) == \(elementType.name)? {}"
                                 }
                             }
                         }

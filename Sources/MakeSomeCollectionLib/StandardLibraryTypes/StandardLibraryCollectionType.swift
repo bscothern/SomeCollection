@@ -7,29 +7,78 @@
 //
 
 public enum StandardLibraryCollectionType {
-    /// All the Generic Standard Library Collection Types and their restrictions within the standard library to conform to SequenceOf/CollectionOf protocols.
+    /// All the genericName Standard Library Collection Types and their restrictions within the standard library to conform to SequenceOf/CollectionOf protocols.
     ///
-    /// - Note: `CollectionDifference` is not generic.
+    /// - Note: `CollectionDifference` is not genericName.
     public static let values: Set<CollectionType> = [
         // Collection Types
         "AnyCollection",
-        .init(name: "ClosedRange", limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"], skipOptional: true, generic: "Bound"),
-        .init(name: "DefaultIndices", excluding: ["Bool", "Error"], skipOptional: true),
+        .init(
+            "ClosedRange",
+            limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"],
+            skipOptional: true,
+            genericName: "Bound"
+        ),
+        .init(
+            "DefaultIndices",
+            excluding: ["Bool", "Error"],
+            skipOptional: true
+        ),
 //        "Dictionary"
-        .init(name: "Dictionary.Keys", excluding: ["Error"]),
-        .init(name: "Set", excluding: ["Error"]),
+        .init(
+            "Dictionary.Keys",
+            excluding: ["Error"]
+        ),
+        .init(
+            "Set",
+            excluding: ["Error"]
+        ),
         "Slice",
         
         // BidirectionalCollection Types
         "AnyBidirectionalCollection",
         "ReversedCollection",
-        .init(name: "String", limitedTo: ["Character"], skipWhereClause: true, skipOptional: true),
-        .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"], skipWhereClause: true, skipOptional: true),
-        .init(name: "String.UTF16View", limitedTo: ["UTF16.CodeUnit"], skipWhereClause: true, skipOptional: true),
-        .init(name: "String.UTF8View", limitedTo: ["UTF8.CodeUnit"], skipWhereClause: true, skipOptional: true),
-        .init(name: "Substring.UnicodeScalarView", limitedTo: ["Unicode.Scalar"], skipWhereClause: true, skipOptional: true),
-        .init(name: "Substring.UTF16View", limitedTo: ["String.UTF16View.Element"], skipWhereClause: true, skipOptional: true),
-        .init(name: "Substring.UTF8View", limitedTo: ["String.UTF8View.Element"], skipWhereClause: true, skipOptional: true),
+        .init(
+            "String",
+            limitedTo: ["Character"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
+        .init(
+            "String.UnicodeScalarView",
+            limitedTo: ["Unicode.Scalar"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
+        .init(
+            "String.UTF16View",
+            limitedTo: ["UTF16.CodeUnit"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
+        .init(
+            "String.UTF8View",
+            limitedTo: ["UTF8.CodeUnit"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
+        .init(
+            "Substring.UnicodeScalarView",
+            limitedTo: ["Unicode.Scalar"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
+        .init(
+            "Substring.UTF16View",
+            limitedTo: ["String.UTF16View.Element"],
+            skipWhereClause: true,
+            skipOptional: true),
+        .init(
+            "Substring.UTF8View",
+            limitedTo: ["String.UTF8View.Element"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
 
         // MutableCollection Type
         "Array",
@@ -39,7 +88,12 @@ public enum StandardLibraryCollectionType {
         "Dictionary.Values",
         "EmptyCollection",
         "UnsafeMutableBufferPointer",
-        .init(name: "UnsafeMutableRawBufferPointer", limitedTo: ["UInt8"], skipWhereClause: true, skipOptional: true),
+        .init(
+            "UnsafeMutableRawBufferPointer",
+            limitedTo: ["UInt8"],
+            skipWhereClause: true,
+            skipOptional: true
+        ),
 
         // RangeReplaceableCollection Type
 //        Array is defined above

@@ -12,7 +12,7 @@ public struct ElementType: Hashable {
     
     var simpleName: String { name.replacingOccurrences(of: ".", with: "") }
 
-    public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases)) {
+    public init(_ name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases)) {
         self.name = name
         self.applicablePlatforms = applicablePlatforms
     }
@@ -27,6 +27,6 @@ extension ElementType: Comparable {
 extension ElementType: ExpressibleByStringLiteral {
     @inlinable
     public init(stringLiteral: String) {
-        self.init(name: stringLiteral)
+        self.init(stringLiteral)
     }
 }

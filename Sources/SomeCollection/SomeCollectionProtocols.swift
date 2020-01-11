@@ -5,6 +5,7 @@
 // MakeSomeCollectionLib 0.1.0
 // 2020-01-11
 //
+
 public protocol SequenceOfBool: Sequence where Element == Bool {}
 public protocol CollectionOfBool: Collection, SequenceOfBool {}
 public protocol SequenceOfOptionalBool: Sequence where Element == Bool? {}
@@ -116,4 +117,3 @@ public protocol SequenceOfUnicodeScalar: Sequence where Element == Unicode.Scala
 public protocol CollectionOfUnicodeScalar: Collection, SequenceOfUnicodeScalar {}
 public protocol SequenceOfOptionalUnicodeScalar: Sequence where Element == Unicode.Scalar? {}
 public protocol CollectionOfOptionalUnicodeScalar: Collection, SequenceOfOptionalUnicodeScalar {}
-
