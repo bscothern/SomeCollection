@@ -8,6 +8,14 @@
 
 public enum StandardLibraryElementType {
     public static let values: Set<ElementType> = [
-        "Int"
+        "Int8",
+        "Int16",
+        "Int32",
+        "Int64",
+        "Int",
+
+        "Float",
+        "Double",
+        .init(name: "Float80", restrictedTo: [.macOS]),
     ]
 }

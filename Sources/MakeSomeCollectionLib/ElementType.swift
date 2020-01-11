@@ -7,10 +7,18 @@
 //
 
 public struct ElementType: Hashable {
-    public var name: String
+    var name: String
+    var applicablePlatforms: Set<Platform>
 
-    public init(name: String) {
+    public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases)) {
         self.name = name
+        self.applicablePlatforms = applicablePlatforms
+    }
+}
+
+extension ElementType: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.name < rhs.name
     }
 }
 

@@ -13,9 +13,9 @@ public struct SequenceType: Hashable {
         case both
     }
 
-    public let name: String
-    public let keyOrValue: KeyOrValue?
-    public let limitedToElementTypes: Set<ElementType>
+    @usableFromInline let name: String
+    @usableFromInline let keyOrValue: KeyOrValue?
+    @usableFromInline let limitedToElementTypes: Set<ElementType>
 
     @inlinable
     public init(name: String, keyOrValue: KeyOrValue? = nil, limitedTo limitedToElementTypes: Set<ElementType> = []) {

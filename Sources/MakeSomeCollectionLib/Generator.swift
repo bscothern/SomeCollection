@@ -19,6 +19,8 @@ public struct Generator {
     let matrix: GenerationMatrix
     let generateAcrossStandardLibrary: Bool
 
+    var date: String { String(Date().description.split(separator: " ").first!) }
+
     // MARK: - Init
     public init(matrix: GenerationMatrix) {
         self.init(matrix: matrix, generateAcrossStandardLibrary: false)
@@ -51,5 +53,55 @@ public struct Generator {
         guard fileManager.changeCurrentDirectoryPath(outputPath) else {
             throw Error.unableToFindTargetOutputDirectory
         }
+
+        try writeBasicProtocols()
     }
+
+    public func writeBasicProtocols() throws {
+        var protocols = """
+        //
+        // SomeCollectionProtocols.swift
+        //
+        // Auto Generated
+        // MakeSomeCollectionLib \(Version())
+        // \(date)
+        //
+
+        """
+        matrix.elementTypes
+            .sorted()
+            .forEach { elementType in
+                protocols += "\n"
+                let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+                if isRestricted {
+                    protocols += "#if"
+                    elementType.applicablePlatforms
+                        .sorted()
+                        .forEach { platform in
+                            protocols += " os(\(platform.rawValue))"
+                        }
+                    protocols += "\n"
+                }
+
+                protocols += """
+                public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
+                public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
+                """
+
+                if isRestricted {
+                    protocols += """
+
+                    #endif
+                    """
+                }
+                protocols += "\n"
+            }
+
+        try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
+    }
+}
+
+fileprivate extension ElementType {
+    var sequenceName: String { "SequenceOf\(name)" }
+    var collectionName: String { "CollectionOf\(name)" }
 }
