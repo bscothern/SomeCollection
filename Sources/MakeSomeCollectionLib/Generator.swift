@@ -120,7 +120,7 @@ public struct Generator {
 
         try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
     }
-    
+
     private func generateConformances(for set: Set<SequenceType>, isCollectionTypes: Bool, appendingTo conformances: inout String) {
         set.sorted()
             .forEach { sequenceType in
@@ -140,7 +140,7 @@ public struct Generator {
                     }
                     .forEach { elementType in
                         added = true
-                        
+
                         let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
                         if isRestricted {
                             conformances += "\n#if"
@@ -153,7 +153,7 @@ public struct Generator {
 
                         if sequenceType.skipWhereClause {
                             conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) {}"
-                            
+
                             if isCollectionTypes {
                                 conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) {}"
                             }
@@ -177,7 +177,7 @@ public struct Generator {
                                 }
                             }
                         }
-                        
+
                         if isRestricted {
                             conformances += "\n#endif"
                         }

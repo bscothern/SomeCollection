@@ -7,7 +7,6 @@
 //
 
 public struct SequenceType: Hashable {
-
     @usableFromInline let name: String
     @usableFromInline let limitedToElementTypes: Set<ElementType>
     @usableFromInline let excludedElementTypes: Set<ElementType>

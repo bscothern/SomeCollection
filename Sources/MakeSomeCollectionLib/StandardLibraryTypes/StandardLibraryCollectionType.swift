@@ -34,7 +34,7 @@ public enum StandardLibraryCollectionType {
             excluding: ["Error"]
         ),
         "Slice",
-        
+
         // BidirectionalCollection Types
         "AnyBidirectionalCollection",
         "ReversedCollection",
@@ -72,7 +72,8 @@ public enum StandardLibraryCollectionType {
             "Substring.UTF16View",
             limitedTo: ["String.UTF16View.Element"],
             skipWhereClause: true,
-            skipOptional: true),
+            skipOptional: true
+        ),
         .init(
             "Substring.UTF8View",
             limitedTo: ["String.UTF8View.Element"],
