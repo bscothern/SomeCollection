@@ -7,16 +7,20 @@
 //
 
 public enum StandardLibraryCollectionType {
+    
+    /// All the Generic Standard Library Collection Types and their restrictions within the standard library to conform to SequenceOf/CollectionOf protocols.
+    ///
+    /// - Note: `CollectionDifference` is not generic.
     public static let values: Set<CollectionType> = [
         // Collection Types
         "AnyCollection",
-//        "ClosedRange",
-//        "CollectionDifference",
-//        "DefaultIndices",
+        .init(name: "ClosedRange", limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"], skipOptional: true, generic: "Bound"),
+        .init(name: "DefaultIndices", excluding: ["Bool", "Error"], skipOptional: true),
 //        .init(name: "Dictionary", keyOrValue: .both),
 //        .init(name: "Dictionary.Keys", keyOrValue: .key),
         .init(name: "Set", excluding: ["Error"]),
         "Slice",
+        
         // BidirectionalCollection Types
         "AnyBidirectionalCollection",
         "ReversedCollection",
@@ -33,18 +37,15 @@ public enum StandardLibraryCollectionType {
         "ArraySlice",
         "CollectionOfOne",
         "ContiguousArray",
-//        .init(name: "Data", limitedTo: ["UInt8"]),
         .init(name: "Dictionary.Values", keyOrValue: .value),
         "EmptyCollection",
-//        "IndexPath",
         "UnsafeMutableBufferPointer",
-        .init(name: "UnsafeMutableRawBufferPointer", limitedTo: [.init(name: "UInt8", skipWhereClause: true)]),
+        .init(name: "UnsafeMutableRawBufferPointer", limitedTo: ["UInt8"], skipWhereClause: true, skipOptional: true),
 
         // RangeReplaceableCollection Type
         "Array",
         "ArraySlice",
         "ContiguousArray",
-//        .init(name: "Data", limitedTo: ["UInt8"]),
         .init(name: "String", limitedTo: ["Character"]),
         .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
         .init(name: "Substring", limitedTo: ["Character"]),

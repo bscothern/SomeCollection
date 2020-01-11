@@ -138,15 +138,25 @@ public struct Generator {
                     }
                     .forEach { elementType in
                         added = true
+                        
+                        let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+                        if isRestricted {
+                            conformances += "\n#if"
+                            elementType.applicablePlatforms
+                                .sorted()
+                                .forEach { platform in
+                                    conformances += " os(\(platform.rawValue))"
+                                }
+                        }
 
-                        if elementType.skipWhereClause {
+                        if collectionType.skipWhereClause {
                             conformances += """
 
                             extension \(collectionType.name): \(elementType.sequenceName) {}
                             extension \(collectionType.name): \(elementType.collectionName) {}
                             """
 
-                            if !elementType.skipOptional {
+                            if !collectionType.skipOptional {
                                 conformances += """
 
                                 extension \(collectionType.name): \(elementType.sequenceNameOptional) {}
@@ -156,18 +166,26 @@ public struct Generator {
                         } else {
                             conformances += """
 
-                            extension \(collectionType.name): \(elementType.sequenceName) where Element == \(elementType.name) {}
-                            extension \(collectionType.name): \(elementType.collectionName) where Element == \(elementType.name) {}
+                            extension \(collectionType.name): \(elementType.sequenceName) where \(collectionType.generic) == \(elementType.name) {}
+                            extension \(collectionType.name): \(elementType.collectionName) where \(collectionType.generic) == \(elementType.name) {}
                             """
 
-                            if !elementType.skipOptional {
+                            if !collectionType.skipOptional {
                                 conformances += """
                                 
-                                extension \(collectionType.name): \(elementType.sequenceNameOptional) where Element == \(elementType.name)? {}
-                                extension \(collectionType.name): \(elementType.collectionNameOptional) where Element == \(elementType.name)? {}
+                                extension \(collectionType.name): \(elementType.sequenceNameOptional) where \(collectionType.generic) == \(elementType.name)? {}
+                                extension \(collectionType.name): \(elementType.collectionNameOptional) where \(collectionType.generic) == \(elementType.name)? {}
                                 """
                             }
                         }
+                        
+                        if isRestricted {
+                            conformances += """
+
+                            #endif
+                            """
+                        }
+
                     }
 
                 if added {
@@ -195,13 +213,24 @@ public struct Generator {
                     .forEach { elementType in
                         added = true
                         
-                        if elementType.skipWhereClause {
+                        let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+                        if isRestricted {
+                            conformances += "\n#if"
+                            elementType.applicablePlatforms
+                                .sorted()
+                                .forEach { platform in
+                                    conformances += " os(\(platform.rawValue))"
+                                }
+                        }
+
+                        
+                        if sequenceType.skipWhereClause {
                             conformances += """
                             
                             extension \(sequenceType.name): \(elementType.sequenceName) {}
                             """
                             
-                            if !elementType.skipOptional {
+                            if !sequenceType.skipOptional {
                                 conformances += """
                                 
                                 extension \(sequenceType.name): \(elementType.sequenceNameOptional) {}
@@ -210,15 +239,22 @@ public struct Generator {
                         } else {
                             conformances += """
                             
-                            extension \(sequenceType.name): \(elementType.sequenceName) where Element == \(elementType.name) {}
+                            extension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.generic) == \(elementType.name) {}
                             """
                             
-                            if !elementType.skipOptional {
+                            if !sequenceType.skipOptional {
                                 conformances += """
                                 
-                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) where Element == \(elementType.name)? {}
+                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}
                                 """
                             }
+                        }
+                        
+                        if isRestricted {
+                            conformances += """
+
+                            #endif
+                            """
                         }
                     }
                 

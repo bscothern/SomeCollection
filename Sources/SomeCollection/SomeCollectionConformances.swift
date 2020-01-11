@@ -22,10 +22,12 @@ extension AnyBidirectionalCollection: SequenceOfFloat where Element == Float {}
 extension AnyBidirectionalCollection: CollectionOfFloat where Element == Float {}
 extension AnyBidirectionalCollection: SequenceOfOptionalFloat where Element == Float? {}
 extension AnyBidirectionalCollection: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension AnyBidirectionalCollection: SequenceOfFloat80 where Element == Float80 {}
 extension AnyBidirectionalCollection: CollectionOfFloat80 where Element == Float80 {}
 extension AnyBidirectionalCollection: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension AnyBidirectionalCollection: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension AnyBidirectionalCollection: SequenceOfInt where Element == Int {}
 extension AnyBidirectionalCollection: CollectionOfInt where Element == Int {}
 extension AnyBidirectionalCollection: SequenceOfOptionalInt where Element == Int? {}
@@ -91,10 +93,12 @@ extension AnyCollection: SequenceOfFloat where Element == Float {}
 extension AnyCollection: CollectionOfFloat where Element == Float {}
 extension AnyCollection: SequenceOfOptionalFloat where Element == Float? {}
 extension AnyCollection: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension AnyCollection: SequenceOfFloat80 where Element == Float80 {}
 extension AnyCollection: CollectionOfFloat80 where Element == Float80 {}
 extension AnyCollection: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension AnyCollection: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension AnyCollection: SequenceOfInt where Element == Int {}
 extension AnyCollection: CollectionOfInt where Element == Int {}
 extension AnyCollection: SequenceOfOptionalInt where Element == Int? {}
@@ -160,10 +164,12 @@ extension Array: SequenceOfFloat where Element == Float {}
 extension Array: CollectionOfFloat where Element == Float {}
 extension Array: SequenceOfOptionalFloat where Element == Float? {}
 extension Array: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension Array: SequenceOfFloat80 where Element == Float80 {}
 extension Array: CollectionOfFloat80 where Element == Float80 {}
 extension Array: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension Array: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension Array: SequenceOfInt where Element == Int {}
 extension Array: CollectionOfInt where Element == Int {}
 extension Array: SequenceOfOptionalInt where Element == Int? {}
@@ -229,10 +235,12 @@ extension ArraySlice: SequenceOfFloat where Element == Float {}
 extension ArraySlice: CollectionOfFloat where Element == Float {}
 extension ArraySlice: SequenceOfOptionalFloat where Element == Float? {}
 extension ArraySlice: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension ArraySlice: SequenceOfFloat80 where Element == Float80 {}
 extension ArraySlice: CollectionOfFloat80 where Element == Float80 {}
 extension ArraySlice: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension ArraySlice: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension ArraySlice: SequenceOfInt where Element == Int {}
 extension ArraySlice: CollectionOfInt where Element == Int {}
 extension ArraySlice: SequenceOfOptionalInt where Element == Int? {}
@@ -282,6 +290,27 @@ extension ArraySlice: CollectionOfUInt8 where Element == UInt8 {}
 extension ArraySlice: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension ArraySlice: CollectionOfOptionalUInt8 where Element == UInt8? {}
 
+extension ClosedRange: SequenceOfInt where Bound == Int {}
+extension ClosedRange: CollectionOfInt where Bound == Int {}
+extension ClosedRange: SequenceOfInt16 where Bound == Int16 {}
+extension ClosedRange: CollectionOfInt16 where Bound == Int16 {}
+extension ClosedRange: SequenceOfInt32 where Bound == Int32 {}
+extension ClosedRange: CollectionOfInt32 where Bound == Int32 {}
+extension ClosedRange: SequenceOfInt64 where Bound == Int64 {}
+extension ClosedRange: CollectionOfInt64 where Bound == Int64 {}
+extension ClosedRange: SequenceOfInt8 where Bound == Int8 {}
+extension ClosedRange: CollectionOfInt8 where Bound == Int8 {}
+extension ClosedRange: SequenceOfUInt where Bound == UInt {}
+extension ClosedRange: CollectionOfUInt where Bound == UInt {}
+extension ClosedRange: SequenceOfUInt16 where Bound == UInt16 {}
+extension ClosedRange: CollectionOfUInt16 where Bound == UInt16 {}
+extension ClosedRange: SequenceOfUInt32 where Bound == UInt32 {}
+extension ClosedRange: CollectionOfUInt32 where Bound == UInt32 {}
+extension ClosedRange: SequenceOfUInt64 where Bound == UInt64 {}
+extension ClosedRange: CollectionOfUInt64 where Bound == UInt64 {}
+extension ClosedRange: SequenceOfUInt8 where Bound == UInt8 {}
+extension ClosedRange: CollectionOfUInt8 where Bound == UInt8 {}
+
 extension CollectionOfOne: SequenceOfBool where Element == Bool {}
 extension CollectionOfOne: CollectionOfBool where Element == Bool {}
 extension CollectionOfOne: SequenceOfOptionalBool where Element == Bool? {}
@@ -298,10 +327,12 @@ extension CollectionOfOne: SequenceOfFloat where Element == Float {}
 extension CollectionOfOne: CollectionOfFloat where Element == Float {}
 extension CollectionOfOne: SequenceOfOptionalFloat where Element == Float? {}
 extension CollectionOfOne: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension CollectionOfOne: SequenceOfFloat80 where Element == Float80 {}
 extension CollectionOfOne: CollectionOfFloat80 where Element == Float80 {}
 extension CollectionOfOne: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension CollectionOfOne: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension CollectionOfOne: SequenceOfInt where Element == Int {}
 extension CollectionOfOne: CollectionOfInt where Element == Int {}
 extension CollectionOfOne: SequenceOfOptionalInt where Element == Int? {}
@@ -367,10 +398,12 @@ extension ContiguousArray: SequenceOfFloat where Element == Float {}
 extension ContiguousArray: CollectionOfFloat where Element == Float {}
 extension ContiguousArray: SequenceOfOptionalFloat where Element == Float? {}
 extension ContiguousArray: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension ContiguousArray: SequenceOfFloat80 where Element == Float80 {}
 extension ContiguousArray: CollectionOfFloat80 where Element == Float80 {}
 extension ContiguousArray: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension ContiguousArray: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension ContiguousArray: SequenceOfInt where Element == Int {}
 extension ContiguousArray: CollectionOfInt where Element == Int {}
 extension ContiguousArray: SequenceOfOptionalInt where Element == Int? {}
@@ -420,6 +453,39 @@ extension ContiguousArray: CollectionOfUInt8 where Element == UInt8 {}
 extension ContiguousArray: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension ContiguousArray: CollectionOfOptionalUInt8 where Element == UInt8? {}
 
+extension DefaultIndices: SequenceOfDouble where Element == Double {}
+extension DefaultIndices: CollectionOfDouble where Element == Double {}
+extension DefaultIndices: SequenceOfFloat where Element == Float {}
+extension DefaultIndices: CollectionOfFloat where Element == Float {}
+#if os(macOS)
+extension DefaultIndices: SequenceOfFloat80 where Element == Float80 {}
+extension DefaultIndices: CollectionOfFloat80 where Element == Float80 {}
+#endif
+extension DefaultIndices: SequenceOfInt where Element == Int {}
+extension DefaultIndices: CollectionOfInt where Element == Int {}
+extension DefaultIndices: SequenceOfInt16 where Element == Int16 {}
+extension DefaultIndices: CollectionOfInt16 where Element == Int16 {}
+extension DefaultIndices: SequenceOfInt32 where Element == Int32 {}
+extension DefaultIndices: CollectionOfInt32 where Element == Int32 {}
+extension DefaultIndices: SequenceOfInt64 where Element == Int64 {}
+extension DefaultIndices: CollectionOfInt64 where Element == Int64 {}
+extension DefaultIndices: SequenceOfInt8 where Element == Int8 {}
+extension DefaultIndices: CollectionOfInt8 where Element == Int8 {}
+extension DefaultIndices: SequenceOfString where Element == String {}
+extension DefaultIndices: CollectionOfString where Element == String {}
+extension DefaultIndices: SequenceOfSubstring where Element == Substring {}
+extension DefaultIndices: CollectionOfSubstring where Element == Substring {}
+extension DefaultIndices: SequenceOfUInt where Element == UInt {}
+extension DefaultIndices: CollectionOfUInt where Element == UInt {}
+extension DefaultIndices: SequenceOfUInt16 where Element == UInt16 {}
+extension DefaultIndices: CollectionOfUInt16 where Element == UInt16 {}
+extension DefaultIndices: SequenceOfUInt32 where Element == UInt32 {}
+extension DefaultIndices: CollectionOfUInt32 where Element == UInt32 {}
+extension DefaultIndices: SequenceOfUInt64 where Element == UInt64 {}
+extension DefaultIndices: CollectionOfUInt64 where Element == UInt64 {}
+extension DefaultIndices: SequenceOfUInt8 where Element == UInt8 {}
+extension DefaultIndices: CollectionOfUInt8 where Element == UInt8 {}
+
 extension Dictionary.Values: SequenceOfBool where Element == Bool {}
 extension Dictionary.Values: CollectionOfBool where Element == Bool {}
 extension Dictionary.Values: SequenceOfOptionalBool where Element == Bool? {}
@@ -436,10 +502,12 @@ extension Dictionary.Values: SequenceOfFloat where Element == Float {}
 extension Dictionary.Values: CollectionOfFloat where Element == Float {}
 extension Dictionary.Values: SequenceOfOptionalFloat where Element == Float? {}
 extension Dictionary.Values: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension Dictionary.Values: SequenceOfFloat80 where Element == Float80 {}
 extension Dictionary.Values: CollectionOfFloat80 where Element == Float80 {}
 extension Dictionary.Values: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension Dictionary.Values: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension Dictionary.Values: SequenceOfInt where Element == Int {}
 extension Dictionary.Values: CollectionOfInt where Element == Int {}
 extension Dictionary.Values: SequenceOfOptionalInt where Element == Int? {}
@@ -505,10 +573,12 @@ extension EmptyCollection: SequenceOfFloat where Element == Float {}
 extension EmptyCollection: CollectionOfFloat where Element == Float {}
 extension EmptyCollection: SequenceOfOptionalFloat where Element == Float? {}
 extension EmptyCollection: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension EmptyCollection: SequenceOfFloat80 where Element == Float80 {}
 extension EmptyCollection: CollectionOfFloat80 where Element == Float80 {}
 extension EmptyCollection: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension EmptyCollection: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension EmptyCollection: SequenceOfInt where Element == Int {}
 extension EmptyCollection: CollectionOfInt where Element == Int {}
 extension EmptyCollection: SequenceOfOptionalInt where Element == Int? {}
@@ -574,10 +644,12 @@ extension ReversedCollection: SequenceOfFloat where Element == Float {}
 extension ReversedCollection: CollectionOfFloat where Element == Float {}
 extension ReversedCollection: SequenceOfOptionalFloat where Element == Float? {}
 extension ReversedCollection: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension ReversedCollection: SequenceOfFloat80 where Element == Float80 {}
 extension ReversedCollection: CollectionOfFloat80 where Element == Float80 {}
 extension ReversedCollection: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension ReversedCollection: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension ReversedCollection: SequenceOfInt where Element == Int {}
 extension ReversedCollection: CollectionOfInt where Element == Int {}
 extension ReversedCollection: SequenceOfOptionalInt where Element == Int? {}
@@ -639,10 +711,12 @@ extension Set: SequenceOfFloat where Element == Float {}
 extension Set: CollectionOfFloat where Element == Float {}
 extension Set: SequenceOfOptionalFloat where Element == Float? {}
 extension Set: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension Set: SequenceOfFloat80 where Element == Float80 {}
 extension Set: CollectionOfFloat80 where Element == Float80 {}
 extension Set: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension Set: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension Set: SequenceOfInt where Element == Int {}
 extension Set: CollectionOfInt where Element == Int {}
 extension Set: SequenceOfOptionalInt where Element == Int? {}
@@ -708,10 +782,12 @@ extension Slice: SequenceOfFloat where Element == Float {}
 extension Slice: CollectionOfFloat where Element == Float {}
 extension Slice: SequenceOfOptionalFloat where Element == Float? {}
 extension Slice: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension Slice: SequenceOfFloat80 where Element == Float80 {}
 extension Slice: CollectionOfFloat80 where Element == Float80 {}
 extension Slice: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension Slice: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension Slice: SequenceOfInt where Element == Int {}
 extension Slice: CollectionOfInt where Element == Int {}
 extension Slice: SequenceOfOptionalInt where Element == Int? {}
@@ -777,10 +853,12 @@ extension UnsafeMutableBufferPointer: SequenceOfFloat where Element == Float {}
 extension UnsafeMutableBufferPointer: CollectionOfFloat where Element == Float {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalFloat where Element == Float? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension UnsafeMutableBufferPointer: SequenceOfFloat80 where Element == Float80 {}
 extension UnsafeMutableBufferPointer: CollectionOfFloat80 where Element == Float80 {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalFloat80 where Element == Float80? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension UnsafeMutableBufferPointer: SequenceOfInt where Element == Int {}
 extension UnsafeMutableBufferPointer: CollectionOfInt where Element == Int {}
 extension UnsafeMutableBufferPointer: SequenceOfOptionalInt where Element == Int? {}
@@ -830,6 +908,9 @@ extension UnsafeMutableBufferPointer: CollectionOfUInt8 where Element == UInt8 {
 extension UnsafeMutableBufferPointer: SequenceOfOptionalUInt8 where Element == UInt8? {}
 extension UnsafeMutableBufferPointer: CollectionOfOptionalUInt8 where Element == UInt8? {}
 
+extension UnsafeMutableRawBufferPointer: SequenceOfUInt8 {}
+extension UnsafeMutableRawBufferPointer: CollectionOfUInt8 {}
+
 extension AnyIterator: SequenceOfBool where Element == Bool {}
 extension AnyIterator: SequenceOfOptionalBool where Element == Bool? {}
 extension AnyIterator: SequenceOfDouble where Element == Double {}
@@ -838,8 +919,10 @@ extension AnyIterator: SequenceOfError where Element == Error {}
 extension AnyIterator: SequenceOfOptionalError where Element == Error? {}
 extension AnyIterator: SequenceOfFloat where Element == Float {}
 extension AnyIterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension AnyIterator: SequenceOfFloat80 where Element == Float80 {}
 extension AnyIterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension AnyIterator: SequenceOfInt where Element == Int {}
 extension AnyIterator: SequenceOfOptionalInt where Element == Int? {}
 extension AnyIterator: SequenceOfInt16 where Element == Int16 {}
@@ -873,8 +956,10 @@ extension AnySequence: SequenceOfError where Element == Error {}
 extension AnySequence: SequenceOfOptionalError where Element == Error? {}
 extension AnySequence: SequenceOfFloat where Element == Float {}
 extension AnySequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension AnySequence: SequenceOfFloat80 where Element == Float80 {}
 extension AnySequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension AnySequence: SequenceOfInt where Element == Int {}
 extension AnySequence: SequenceOfOptionalInt where Element == Int? {}
 extension AnySequence: SequenceOfInt16 where Element == Int16 {}
@@ -908,8 +993,10 @@ extension DropFirstSequence: SequenceOfError where Element == Error {}
 extension DropFirstSequence: SequenceOfOptionalError where Element == Error? {}
 extension DropFirstSequence: SequenceOfFloat where Element == Float {}
 extension DropFirstSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension DropFirstSequence: SequenceOfFloat80 where Element == Float80 {}
 extension DropFirstSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension DropFirstSequence: SequenceOfInt where Element == Int {}
 extension DropFirstSequence: SequenceOfOptionalInt where Element == Int? {}
 extension DropFirstSequence: SequenceOfInt16 where Element == Int16 {}
@@ -943,8 +1030,10 @@ extension DropWhileSequence: SequenceOfError where Element == Error {}
 extension DropWhileSequence: SequenceOfOptionalError where Element == Error? {}
 extension DropWhileSequence: SequenceOfFloat where Element == Float {}
 extension DropWhileSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension DropWhileSequence: SequenceOfFloat80 where Element == Float80 {}
 extension DropWhileSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension DropWhileSequence: SequenceOfInt where Element == Int {}
 extension DropWhileSequence: SequenceOfOptionalInt where Element == Int? {}
 extension DropWhileSequence: SequenceOfInt16 where Element == Int16 {}
@@ -978,8 +1067,10 @@ extension EmptyCollection.Iterator: SequenceOfError where Element == Error {}
 extension EmptyCollection.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension EmptyCollection.Iterator: SequenceOfFloat where Element == Float {}
 extension EmptyCollection.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension EmptyCollection.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension EmptyCollection.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension EmptyCollection.Iterator: SequenceOfInt where Element == Int {}
 extension EmptyCollection.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension EmptyCollection.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1013,8 +1104,10 @@ extension FlattenSequence: SequenceOfError where Element == Error {}
 extension FlattenSequence: SequenceOfOptionalError where Element == Error? {}
 extension FlattenSequence: SequenceOfFloat where Element == Float {}
 extension FlattenSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension FlattenSequence: SequenceOfFloat80 where Element == Float80 {}
 extension FlattenSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension FlattenSequence: SequenceOfInt where Element == Int {}
 extension FlattenSequence: SequenceOfOptionalInt where Element == Int? {}
 extension FlattenSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1048,8 +1141,10 @@ extension FlattenSequence.Iterator: SequenceOfError where Element == Error {}
 extension FlattenSequence.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension FlattenSequence.Iterator: SequenceOfFloat where Element == Float {}
 extension FlattenSequence.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension FlattenSequence.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension FlattenSequence.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension FlattenSequence.Iterator: SequenceOfInt where Element == Int {}
 extension FlattenSequence.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension FlattenSequence.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1083,8 +1178,10 @@ extension IndexingIterator: SequenceOfError where Element == Error {}
 extension IndexingIterator: SequenceOfOptionalError where Element == Error? {}
 extension IndexingIterator: SequenceOfFloat where Element == Float {}
 extension IndexingIterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension IndexingIterator: SequenceOfFloat80 where Element == Float80 {}
 extension IndexingIterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension IndexingIterator: SequenceOfInt where Element == Int {}
 extension IndexingIterator: SequenceOfOptionalInt where Element == Int? {}
 extension IndexingIterator: SequenceOfInt16 where Element == Int16 {}
@@ -1118,8 +1215,10 @@ extension JoinedSequence: SequenceOfError where Element == Error {}
 extension JoinedSequence: SequenceOfOptionalError where Element == Error? {}
 extension JoinedSequence: SequenceOfFloat where Element == Float {}
 extension JoinedSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension JoinedSequence: SequenceOfFloat80 where Element == Float80 {}
 extension JoinedSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension JoinedSequence: SequenceOfInt where Element == Int {}
 extension JoinedSequence: SequenceOfOptionalInt where Element == Int? {}
 extension JoinedSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1153,8 +1252,10 @@ extension LazyDropWhileSequence: SequenceOfError where Element == Error {}
 extension LazyDropWhileSequence: SequenceOfOptionalError where Element == Error? {}
 extension LazyDropWhileSequence: SequenceOfFloat where Element == Float {}
 extension LazyDropWhileSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyDropWhileSequence: SequenceOfFloat80 where Element == Float80 {}
 extension LazyDropWhileSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyDropWhileSequence: SequenceOfInt where Element == Int {}
 extension LazyDropWhileSequence: SequenceOfOptionalInt where Element == Int? {}
 extension LazyDropWhileSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1188,8 +1289,10 @@ extension LazyFilterSequence: SequenceOfError where Element == Error {}
 extension LazyFilterSequence: SequenceOfOptionalError where Element == Error? {}
 extension LazyFilterSequence: SequenceOfFloat where Element == Float {}
 extension LazyFilterSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyFilterSequence: SequenceOfFloat80 where Element == Float80 {}
 extension LazyFilterSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyFilterSequence: SequenceOfInt where Element == Int {}
 extension LazyFilterSequence: SequenceOfOptionalInt where Element == Int? {}
 extension LazyFilterSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1223,8 +1326,10 @@ extension LazyFilterSequence.Iterator: SequenceOfError where Element == Error {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension LazyFilterSequence.Iterator: SequenceOfFloat where Element == Float {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyFilterSequence.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyFilterSequence.Iterator: SequenceOfInt where Element == Int {}
 extension LazyFilterSequence.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension LazyFilterSequence.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1258,8 +1363,10 @@ extension LazyMapSequence: SequenceOfError where Element == Error {}
 extension LazyMapSequence: SequenceOfOptionalError where Element == Error? {}
 extension LazyMapSequence: SequenceOfFloat where Element == Float {}
 extension LazyMapSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyMapSequence: SequenceOfFloat80 where Element == Float80 {}
 extension LazyMapSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyMapSequence: SequenceOfInt where Element == Int {}
 extension LazyMapSequence: SequenceOfOptionalInt where Element == Int? {}
 extension LazyMapSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1293,8 +1400,10 @@ extension LazyMapSequence.Iterator: SequenceOfError where Element == Error {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension LazyMapSequence.Iterator: SequenceOfFloat where Element == Float {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyMapSequence.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyMapSequence.Iterator: SequenceOfInt where Element == Int {}
 extension LazyMapSequence.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension LazyMapSequence.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1328,8 +1437,10 @@ extension LazyPrefixWhileSequence: SequenceOfError where Element == Error {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalError where Element == Error? {}
 extension LazyPrefixWhileSequence: SequenceOfFloat where Element == Float {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyPrefixWhileSequence: SequenceOfFloat80 where Element == Float80 {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyPrefixWhileSequence: SequenceOfInt where Element == Int {}
 extension LazyPrefixWhileSequence: SequenceOfOptionalInt where Element == Int? {}
 extension LazyPrefixWhileSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1363,8 +1474,10 @@ extension LazyPrefixWhileSequence.Iterator: SequenceOfError where Element == Err
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfFloat where Element == Float {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazyPrefixWhileSequence.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazyPrefixWhileSequence.Iterator: SequenceOfInt where Element == Int {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension LazyPrefixWhileSequence.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1398,8 +1511,10 @@ extension LazySequence: SequenceOfError where Element == Error {}
 extension LazySequence: SequenceOfOptionalError where Element == Error? {}
 extension LazySequence: SequenceOfFloat where Element == Float {}
 extension LazySequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension LazySequence: SequenceOfFloat80 where Element == Float80 {}
 extension LazySequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension LazySequence: SequenceOfInt where Element == Int {}
 extension LazySequence: SequenceOfOptionalInt where Element == Int? {}
 extension LazySequence: SequenceOfInt16 where Element == Int16 {}
@@ -1425,6 +1540,17 @@ extension LazySequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension LazySequence: SequenceOfUInt8 where Element == UInt8 {}
 extension LazySequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
 
+extension PartialRangeFrom: SequenceOfInt where Bound == Int {}
+extension PartialRangeFrom: SequenceOfInt16 where Bound == Int16 {}
+extension PartialRangeFrom: SequenceOfInt32 where Bound == Int32 {}
+extension PartialRangeFrom: SequenceOfInt64 where Bound == Int64 {}
+extension PartialRangeFrom: SequenceOfInt8 where Bound == Int8 {}
+extension PartialRangeFrom: SequenceOfUInt where Bound == UInt {}
+extension PartialRangeFrom: SequenceOfUInt16 where Bound == UInt16 {}
+extension PartialRangeFrom: SequenceOfUInt32 where Bound == UInt32 {}
+extension PartialRangeFrom: SequenceOfUInt64 where Bound == UInt64 {}
+extension PartialRangeFrom: SequenceOfUInt8 where Bound == UInt8 {}
+
 extension PrefixSequence: SequenceOfBool where Element == Bool {}
 extension PrefixSequence: SequenceOfOptionalBool where Element == Bool? {}
 extension PrefixSequence: SequenceOfDouble where Element == Double {}
@@ -1433,8 +1559,10 @@ extension PrefixSequence: SequenceOfError where Element == Error {}
 extension PrefixSequence: SequenceOfOptionalError where Element == Error? {}
 extension PrefixSequence: SequenceOfFloat where Element == Float {}
 extension PrefixSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension PrefixSequence: SequenceOfFloat80 where Element == Float80 {}
 extension PrefixSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension PrefixSequence: SequenceOfInt where Element == Int {}
 extension PrefixSequence: SequenceOfOptionalInt where Element == Int? {}
 extension PrefixSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1460,6 +1588,17 @@ extension PrefixSequence: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension PrefixSequence: SequenceOfUInt8 where Element == UInt8 {}
 extension PrefixSequence: SequenceOfOptionalUInt8 where Element == UInt8? {}
 
+extension Range: SequenceOfInt where Bound == Int {}
+extension Range: SequenceOfInt16 where Bound == Int16 {}
+extension Range: SequenceOfInt32 where Bound == Int32 {}
+extension Range: SequenceOfInt64 where Bound == Int64 {}
+extension Range: SequenceOfInt8 where Bound == Int8 {}
+extension Range: SequenceOfUInt where Bound == UInt {}
+extension Range: SequenceOfUInt16 where Bound == UInt16 {}
+extension Range: SequenceOfUInt32 where Bound == UInt32 {}
+extension Range: SequenceOfUInt64 where Bound == UInt64 {}
+extension Range: SequenceOfUInt8 where Bound == UInt8 {}
+
 extension ReversedCollection.Iterator: SequenceOfBool where Element == Bool {}
 extension ReversedCollection.Iterator: SequenceOfOptionalBool where Element == Bool? {}
 extension ReversedCollection.Iterator: SequenceOfDouble where Element == Double {}
@@ -1468,8 +1607,10 @@ extension ReversedCollection.Iterator: SequenceOfError where Element == Error {}
 extension ReversedCollection.Iterator: SequenceOfOptionalError where Element == Error? {}
 extension ReversedCollection.Iterator: SequenceOfFloat where Element == Float {}
 extension ReversedCollection.Iterator: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension ReversedCollection.Iterator: SequenceOfFloat80 where Element == Float80 {}
 extension ReversedCollection.Iterator: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension ReversedCollection.Iterator: SequenceOfInt where Element == Int {}
 extension ReversedCollection.Iterator: SequenceOfOptionalInt where Element == Int? {}
 extension ReversedCollection.Iterator: SequenceOfInt16 where Element == Int16 {}
@@ -1495,6 +1636,38 @@ extension ReversedCollection.Iterator: SequenceOfOptionalUInt64 where Element ==
 extension ReversedCollection.Iterator: SequenceOfUInt8 where Element == UInt8 {}
 extension ReversedCollection.Iterator: SequenceOfOptionalUInt8 where Element == UInt8? {}
 
+extension StrideThrough: SequenceOfDouble where Element == Double {}
+extension StrideThrough: SequenceOfFloat where Element == Float {}
+#if os(macOS)
+extension StrideThrough: SequenceOfFloat80 where Element == Float80 {}
+#endif
+extension StrideThrough: SequenceOfInt where Element == Int {}
+extension StrideThrough: SequenceOfInt16 where Element == Int16 {}
+extension StrideThrough: SequenceOfInt32 where Element == Int32 {}
+extension StrideThrough: SequenceOfInt64 where Element == Int64 {}
+extension StrideThrough: SequenceOfInt8 where Element == Int8 {}
+extension StrideThrough: SequenceOfUInt where Element == UInt {}
+extension StrideThrough: SequenceOfUInt16 where Element == UInt16 {}
+extension StrideThrough: SequenceOfUInt32 where Element == UInt32 {}
+extension StrideThrough: SequenceOfUInt64 where Element == UInt64 {}
+extension StrideThrough: SequenceOfUInt8 where Element == UInt8 {}
+
+extension StrideTo: SequenceOfDouble where Element == Double {}
+extension StrideTo: SequenceOfFloat where Element == Float {}
+#if os(macOS)
+extension StrideTo: SequenceOfFloat80 where Element == Float80 {}
+#endif
+extension StrideTo: SequenceOfInt where Element == Int {}
+extension StrideTo: SequenceOfInt16 where Element == Int16 {}
+extension StrideTo: SequenceOfInt32 where Element == Int32 {}
+extension StrideTo: SequenceOfInt64 where Element == Int64 {}
+extension StrideTo: SequenceOfInt8 where Element == Int8 {}
+extension StrideTo: SequenceOfUInt where Element == UInt {}
+extension StrideTo: SequenceOfUInt16 where Element == UInt16 {}
+extension StrideTo: SequenceOfUInt32 where Element == UInt32 {}
+extension StrideTo: SequenceOfUInt64 where Element == UInt64 {}
+extension StrideTo: SequenceOfUInt8 where Element == UInt8 {}
+
 extension UnfoldSequence: SequenceOfBool where Element == Bool {}
 extension UnfoldSequence: SequenceOfOptionalBool where Element == Bool? {}
 extension UnfoldSequence: SequenceOfDouble where Element == Double {}
@@ -1503,8 +1676,10 @@ extension UnfoldSequence: SequenceOfError where Element == Error {}
 extension UnfoldSequence: SequenceOfOptionalError where Element == Error? {}
 extension UnfoldSequence: SequenceOfFloat where Element == Float {}
 extension UnfoldSequence: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension UnfoldSequence: SequenceOfFloat80 where Element == Float80 {}
 extension UnfoldSequence: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension UnfoldSequence: SequenceOfInt where Element == Int {}
 extension UnfoldSequence: SequenceOfOptionalInt where Element == Int? {}
 extension UnfoldSequence: SequenceOfInt16 where Element == Int16 {}
@@ -1538,8 +1713,10 @@ extension UnsafeBufferPointer: SequenceOfError where Element == Error {}
 extension UnsafeBufferPointer: SequenceOfOptionalError where Element == Error? {}
 extension UnsafeBufferPointer: SequenceOfFloat where Element == Float {}
 extension UnsafeBufferPointer: SequenceOfOptionalFloat where Element == Float? {}
+#if os(macOS)
 extension UnsafeBufferPointer: SequenceOfFloat80 where Element == Float80 {}
 extension UnsafeBufferPointer: SequenceOfOptionalFloat80 where Element == Float80? {}
+#endif
 extension UnsafeBufferPointer: SequenceOfInt where Element == Int {}
 extension UnsafeBufferPointer: SequenceOfOptionalInt where Element == Int? {}
 extension UnsafeBufferPointer: SequenceOfInt16 where Element == Int16 {}
@@ -1564,3 +1741,5 @@ extension UnsafeBufferPointer: SequenceOfUInt64 where Element == UInt64 {}
 extension UnsafeBufferPointer: SequenceOfOptionalUInt64 where Element == UInt64? {}
 extension UnsafeBufferPointer: SequenceOfUInt8 where Element == UInt8 {}
 extension UnsafeBufferPointer: SequenceOfOptionalUInt8 where Element == UInt8? {}
+
+extension UnsafeMutableRawBufferPointer.Iterator: SequenceOfUInt8 {}

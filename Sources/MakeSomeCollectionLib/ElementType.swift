@@ -9,14 +9,10 @@
 public struct ElementType: Hashable {
     let name: String
     let applicablePlatforms: Set<Platform>
-    let skipWhereClause: Bool
-    let skipOptional: Bool
 
-    public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases), skipWhereClause: Bool = false, skipOptional: Bool = false) {
+    public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases)) {
         self.name = name
         self.applicablePlatforms = applicablePlatforms
-        self.skipWhereClause = skipWhereClause
-        self.skipOptional = skipOptional
     }
 }
 
