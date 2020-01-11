@@ -6,7 +6,9 @@
 //  Copyright © 2020 Braden Scothern. All rights reserved.
 //
 
-public struct CollectionType: Hashable {
+public typealias CollectionType = SequenceType
+
+public struct SequenceType: Hashable {
     public enum KeyOrValue {
         case key
         case value

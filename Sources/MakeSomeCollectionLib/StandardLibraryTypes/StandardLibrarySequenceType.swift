@@ -7,48 +7,53 @@
 //
 
 public enum StandardLibrarySequenceType {
-    public static let values: Set<SequenceType> = [
-        // Sequence Types
-        "AnyIterator",
-        "AnySequence",
-        "ClosedRange",
-        .init(name: "Dictionary", keyOrValue: .both),
-        "DropFirstSequence",
-        "DropWhileSequence",
-        "EmptyCollection",
-        "EmptyCollection.Iterator",
-        "EnumeratedSequence",
-        "EnumeratedSequence.Iterator",
-        "FlattenSequence",
-        "FlattenSequence.Iterator",
-        "IndexingIterator",
-        "JoinedSequence",
-        "LazyDropWhileSequence",
-        "LazyFilterSequence",
-        "LazyFilterSequence.Iterator",
-        "LazyMapSequence.Iterator",
-        "LazyPrefixWhileSequence",
-        "LazyPrefixWhileSequence.Iterator",
-        "LazySequence",
-        "PartialRangeFrom",
-        "PrefixSequence",
-        "Range",
-        "ReversedCollection",
-        "ReversedCollection.Iterator",
-        "StrideThrough",
-        "StrideTo",
-        "UnfoldSequence",
-        "UnsafeBufferPointer",
-        "UnsafeMutableBufferPointer",
-        .init(name: "UnsafeMutableRawBufferPoint", limitedTo: ["UInt8"]),
-        .init(name: "UnsafeMutableRawBufferPointer.Iterator", limitedTo: ["UInt8"]),
-        "Zip2Sequence",
-
-        // LazySequenceProtocol Types
-        "LazyDropWhileSequence",
-        "LazyFilterSequence",
-        "LazyMapSequence",
-        "LazyPrefixWhileSequence",
-        "LazySequence",
-    ]
+    public static let values: Set<SequenceType> = {
+        let sequenceTypes: Set<SequenceType> = [
+            // Sequence Types
+            "AnyIterator",
+            "AnySequence",
+//            "ClosedRange",
+//            .init(name: "Dictionary", keyOrValue: .both),
+            "DropFirstSequence",
+            "DropWhileSequence",
+            "EmptyCollection",
+            "EmptyCollection.Iterator",
+//            "EnumeratedSequence",
+//            "EnumeratedSequence.Iterator",
+            "FlattenSequence",
+            "FlattenSequence.Iterator",
+            "IndexingIterator",
+            "JoinedSequence",
+            "LazyDropWhileSequence",
+            "LazyFilterSequence",
+            "LazyFilterSequence.Iterator",
+            "LazyMapSequence.Iterator",
+            "LazyPrefixWhileSequence",
+            "LazyPrefixWhileSequence.Iterator",
+            "LazySequence",
+//            "PartialRangeFrom",
+            "PrefixSequence",
+//            "Range",
+            "ReversedCollection",
+            "ReversedCollection.Iterator",
+//            "StrideThrough",
+//            "StrideTo",
+            "UnfoldSequence",
+            "UnsafeBufferPointer",
+            "UnsafeMutableBufferPointer",
+            .init(name: "UnsafeMutableRawBufferPointer", limitedTo: [.init(name: "UInt8", skipWhereClause: true, skipOptional: true)]),
+            .init(name: "UnsafeMutableRawBufferPointer.Iterator", limitedTo: [.init(name: "UInt8", skipWhereClause: true, skipOptional: true)]),
+//            "Zip2Sequence",
+            
+            // LazySequenceProtocol Types
+            "LazyDropWhileSequence",
+            "LazyFilterSequence",
+            "LazyMapSequence",
+            "LazyPrefixWhileSequence",
+            "LazySequence",
+        ]
+        return sequenceTypes.filter { sequenceType in
+            StandardLibraryCollectionType.values.contains { $0.name != sequenceType.name }
+        }
+    }()
 }

@@ -127,7 +127,8 @@ public struct Generator {
 
                 var added = false
                 matrix.elementTypes
-                    .sorted().lazy
+                    .sorted()
+                    .lazy
                     .filter { collectionType.limitedToElementTypes.isEmpty || collectionType.limitedToElementTypes.contains($0) }
                     .filter { !collectionType.excludedElementTypes.contains($0) }
                     .filter { elementType in
@@ -169,6 +170,58 @@ public struct Generator {
                         }
                     }
 
+                if added {
+                    conformances += "\n"
+                }
+            }
+
+        matrix.sequenceTypes
+            .sorted()
+            .lazy
+            .filter { !seen.contains($0.name) }
+            .forEach { sequenceType in
+                var added = false
+                
+                matrix.elementTypes
+                    .sorted()
+                    .lazy
+                    .filter { sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains($0) }
+                    .filter { !sequenceType.excludedElementTypes.contains($0) }
+                    .filter { elementType in
+                        // This allows either the SequenceType or the ElementType to be part of the standard library while the other isn't.
+                        // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
+                        self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) || !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name })
+                    }
+                    .forEach { elementType in
+                        added = true
+                        
+                        if elementType.skipWhereClause {
+                            conformances += """
+                            
+                            extension \(sequenceType.name): \(elementType.sequenceName) {}
+                            """
+                            
+                            if !elementType.skipOptional {
+                                conformances += """
+                                
+                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) {}
+                                """
+                            }
+                        } else {
+                            conformances += """
+                            
+                            extension \(sequenceType.name): \(elementType.sequenceName) where Element == \(elementType.name) {}
+                            """
+                            
+                            if !elementType.skipOptional {
+                                conformances += """
+                                
+                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) where Element == \(elementType.name)? {}
+                                """
+                            }
+                        }
+                    }
+                
                 if added {
                     conformances += "\n"
                 }
