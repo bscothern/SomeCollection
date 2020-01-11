@@ -25,6 +25,12 @@ public struct SequenceType: Hashable {
     }
 }
 
+extension SequenceType: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.name < rhs.name
+    }
+}
+
 extension SequenceType: ExpressibleByStringLiteral {
     @inlinable
     public init(stringLiteral: String) {

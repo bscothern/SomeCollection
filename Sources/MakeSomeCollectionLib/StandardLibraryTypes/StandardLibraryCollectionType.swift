@@ -10,18 +10,15 @@ public enum StandardLibraryCollectionType {
     public static let values: Set<CollectionType> = [
         // Collection Types
         "AnyCollection",
-        "ClosedRange",
-        "CollectionDifference",
+//        "ClosedRange",
+//        "CollectionDifference",
 //        "DefaultIndices",
-        .init(name: "Dictionary", keyOrValue: .both),
-        .init(name: "Dictionary.Keys", keyOrValue: .key),
-        "Set",
+//        .init(name: "Dictionary", keyOrValue: .both),
+//        .init(name: "Dictionary.Keys", keyOrValue: .key),
+        .init(name: "Set", excluding: ["Error"]),
         "Slice",
-
         // BidirectionalCollection Types
         "AnyBidirectionalCollection",
-        .init(name: "IndexSet", limitedTo: ["Int"]),
-        "IndexSet.RangeView", // ?
         "ReversedCollection",
         .init(name: "String", limitedTo: ["Character"]),
         .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
@@ -36,18 +33,18 @@ public enum StandardLibraryCollectionType {
         "ArraySlice",
         "CollectionOfOne",
         "ContiguousArray",
-        .init(name: "Data", limitedTo: ["UInt8"]),
+//        .init(name: "Data", limitedTo: ["UInt8"]),
         .init(name: "Dictionary.Values", keyOrValue: .value),
         "EmptyCollection",
-        "IndexPath",
+//        "IndexPath",
         "UnsafeMutableBufferPointer",
-        .init(name: "UnsafeMutableRawBufferPoint", limitedTo: ["UInt8"]),
+        .init(name: "UnsafeMutableRawBufferPointer", limitedTo: [.init(name: "UInt8", skipWhereClause: true)]),
 
         // RangeReplaceableCollection Type
         "Array",
         "ArraySlice",
         "ContiguousArray",
-        .init(name: "Data", limitedTo: ["UInt8"]),
+//        .init(name: "Data", limitedTo: ["UInt8"]),
         .init(name: "String", limitedTo: ["Character"]),
         .init(name:"String.UnicodeScalarView", limitedTo: ["Unicode.Scalar"]),
         .init(name: "Substring", limitedTo: ["Character"]),

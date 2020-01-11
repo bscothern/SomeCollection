@@ -14,8 +14,21 @@ public enum StandardLibraryElementType {
         "Int64",
         "Int",
 
+        "UInt8",
+        "UInt16",
+        "UInt32",
+        "UInt64",
+        "UInt",
+
         "Float",
         "Double",
         .init(name: "Float80", restrictedTo: [.macOS]),
+
+        "String",
+        "Substring",
+
+        "Bool",
+
+        "Error",
     ]
 }

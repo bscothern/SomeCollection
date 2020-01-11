@@ -2,6 +2,9 @@ included:
     - ./Sources
     - ./Tests
 
+excluded:
+    - ./Sources/SomeCollection
+
 opt_in_rules:
     - anyobject_protocol
     - array_init

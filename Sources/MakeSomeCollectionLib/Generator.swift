@@ -54,10 +54,11 @@ public struct Generator {
             throw Error.unableToFindTargetOutputDirectory
         }
 
-        try writeBasicProtocols()
+        try writeProtocols()
+        try writeConformances()
     }
 
-    public func writeBasicProtocols() throws {
+    public func writeProtocols() throws {
         var protocols = """
         //
         // SomeCollectionProtocols.swift
@@ -86,6 +87,8 @@ public struct Generator {
                 protocols += """
                 public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
                 public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
+                public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
+                public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
                 """
 
                 if isRestricted {
@@ -99,9 +102,77 @@ public struct Generator {
 
         try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
     }
+
+    public func writeConformances() throws {
+        var conformances = """
+        //
+        // SomeCollectionConformances.swift
+        //
+        // Auto Generated
+        // MakeSomeCollectionLib \(Version())
+        // \(date)
+        //
+
+        """
+
+        var seen: Set<String> = []
+        matrix.collectionTypes
+            .sorted()
+            .forEach { collectionType in
+                seen.insert(collectionType.name)
+
+                var added = false
+                matrix.elementTypes
+                    .sorted().lazy
+                    .filter { collectionType.limitedToElementTypes.isEmpty || collectionType.limitedToElementTypes.contains($0) }
+                    .filter { !collectionType.excludedElementTypes.contains($0) }
+                    .forEach { elementType in
+                        added = true
+
+                        if elementType.skipWhereClause {
+                            conformances += """
+
+                            extension \(collectionType.name): \(elementType.sequenceName) {}
+                            extension \(collectionType.name): \(elementType.collectionName) {}
+                            """
+
+                            if !elementType.skipOptional {
+                                conformances += """
+
+                                extension \(collectionType.name): \(elementType.sequenceNameOptional) {}
+                                extension \(collectionType.name): \(elementType.collectionNameOptional) {}
+                                """
+                            }
+                        } else {
+                            conformances += """
+
+                            extension \(collectionType.name): \(elementType.sequenceName) where Element == \(elementType.name) {}
+                            extension \(collectionType.name): \(elementType.collectionName) where Element == \(elementType.name) {}
+                            """
+
+                            if !elementType.skipOptional {
+                                conformances += """
+                                
+                                extension \(collectionType.name): \(elementType.sequenceNameOptional) where Element == \(elementType.name)? {}
+                                extension \(collectionType.name): \(elementType.collectionNameOptional) where Element == \(elementType.name)? {}
+                                """
+                            }
+                        }
+                    }
+
+                if added {
+                    conformances += "\n"
+                }
+            }
+
+        try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
+    }
 }
 
 fileprivate extension ElementType {
     var sequenceName: String { "SequenceOf\(name)" }
     var collectionName: String { "CollectionOf\(name)" }
+
+    var sequenceNameOptional: String { "SequenceOfOptional\(name)" }
+    var collectionNameOptional: String { "CollectionOfOptional\(name)" }
 }
