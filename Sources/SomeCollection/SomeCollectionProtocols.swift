@@ -5,7 +5,6 @@
 // MakeSomeCollectionLib 0.1.0
 // 2020-01-11
 //
-
 public protocol SequenceOfBool: Sequence where Element == Bool {}
 public protocol CollectionOfBool: Collection, SequenceOfBool {}
 public protocol SequenceOfOptionalBool: Sequence where Element == Bool? {}
@@ -92,3 +91,4 @@ public protocol SequenceOfUInt8: Sequence where Element == UInt8 {}
 public protocol CollectionOfUInt8: Collection, SequenceOfUInt8 {}
 public protocol SequenceOfOptionalUInt8: Sequence where Element == UInt8? {}
 public protocol CollectionOfOptionalUInt8: Collection, SequenceOfOptionalUInt8 {}
+

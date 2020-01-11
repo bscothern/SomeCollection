@@ -76,7 +76,6 @@ public struct Generator {
                     return
                 }
 
-                protocols += "\n"
                 let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
                 if isRestricted {
                     protocols += "#if"
@@ -96,12 +95,9 @@ public struct Generator {
                 """
 
                 if isRestricted {
-                    protocols += """
-
-                    #endif
-                    """
+                    protocols += "\n#endif"
                 }
-                protocols += "\n"
+                protocols += "\n\n"
             }
 
         try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
@@ -118,97 +114,28 @@ public struct Generator {
         //
 
         """
+        generateConformances(for: matrix.collectionTypes, isCollectionTypes: true, appendingTo: &conformances)
+        generateConformances(for: matrix.sequenceTypes, isCollectionTypes: false, appendingTo: &conformances)
 
-        var seen: Set<String> = []
-        matrix.collectionTypes
-            .sorted()
-            .forEach { collectionType in
-                seen.insert(collectionType.name)
-
-                var added = false
-                matrix.elementTypes
-                    .sorted()
-                    .lazy
-                    .filter { collectionType.limitedToElementTypes.isEmpty || collectionType.limitedToElementTypes.contains($0) }
-                    .filter { !collectionType.excludedElementTypes.contains($0) }
-                    .filter { elementType in
-                        // This allows either the CollectionType or the ElementType to be part of the standard library while the other isn't.
-                        // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
-                        self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) || !StandardLibraryCollectionType.values.contains(where: { $0.name == collectionType.name })
-                    }
-                    .forEach { elementType in
-                        added = true
-                        
-                        let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
-                        if isRestricted {
-                            conformances += "\n#if"
-                            elementType.applicablePlatforms
-                                .sorted()
-                                .forEach { platform in
-                                    conformances += " os(\(platform.rawValue))"
-                                }
-                        }
-
-                        if collectionType.skipWhereClause {
-                            conformances += """
-
-                            extension \(collectionType.name): \(elementType.sequenceName) {}
-                            extension \(collectionType.name): \(elementType.collectionName) {}
-                            """
-
-                            if !collectionType.skipOptional {
-                                conformances += """
-
-                                extension \(collectionType.name): \(elementType.sequenceNameOptional) {}
-                                extension \(collectionType.name): \(elementType.collectionNameOptional) {}
-                                """
-                            }
-                        } else {
-                            conformances += """
-
-                            extension \(collectionType.name): \(elementType.sequenceName) where \(collectionType.generic) == \(elementType.name) {}
-                            extension \(collectionType.name): \(elementType.collectionName) where \(collectionType.generic) == \(elementType.name) {}
-                            """
-
-                            if !collectionType.skipOptional {
-                                conformances += """
-                                
-                                extension \(collectionType.name): \(elementType.sequenceNameOptional) where \(collectionType.generic) == \(elementType.name)? {}
-                                extension \(collectionType.name): \(elementType.collectionNameOptional) where \(collectionType.generic) == \(elementType.name)? {}
-                                """
-                            }
-                        }
-                        
-                        if isRestricted {
-                            conformances += """
-
-                            #endif
-                            """
-                        }
-
-                    }
-
-                if added {
-                    conformances += "\n"
-                }
-            }
-
-        matrix.sequenceTypes
-            .sorted()
-            .lazy
-            .filter { !seen.contains($0.name) }
+        try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
+    }
+    
+    private func generateConformances(for set: Set<SequenceType>, isCollectionTypes: Bool, appendingTo conformances: inout String) {
+        set.sorted()
             .forEach { sequenceType in
                 var added = false
-                
                 matrix.elementTypes
                     .sorted()
                     .lazy
                     .filter { sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains($0) }
                     .filter { !sequenceType.excludedElementTypes.contains($0) }
                     .filter { elementType in
-                        // This allows either the SequenceType or the ElementType to be part of the standard library while the other isn't.
+                        // This allows either the SequenceType/CollectionType or the ElementType to be part of the standard library while the other isn't.
                         // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
-                        self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) || !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name })
+                        self.generateAcrossStandardLibrary ||
+                            !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) ||
+                            !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name }) ||
+                            !StandardLibraryCollectionType.values.contains(where: { $0.name == sequenceType.name })
                     }
                     .forEach { elementType in
                         added = true
@@ -223,47 +150,42 @@ public struct Generator {
                                 }
                         }
 
-                        
                         if sequenceType.skipWhereClause {
-                            conformances += """
+                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) {}"
                             
-                            extension \(sequenceType.name): \(elementType.sequenceName) {}
-                            """
-                            
+                            if isCollectionTypes {
+                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) {}"
+                            }
+
                             if !sequenceType.skipOptional {
-                                conformances += """
-                                
-                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) {}
-                                """
+                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) {}"
+                                if isCollectionTypes {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) {}"
+                                }
                             }
                         } else {
-                            conformances += """
-                            
-                            extension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.generic) == \(elementType.name) {}
-                            """
-                            
+                            conformances += "\nextension \(sequenceType.name): \(elementType.sequenceName) where \(sequenceType.generic) == \(elementType.name) {}"
+                            if isCollectionTypes {
+                                conformances += "\nextension \(sequenceType.name): \(elementType.collectionName) where \(sequenceType.generic) == \(elementType.name) {}"
+                            }
+
                             if !sequenceType.skipOptional {
-                                conformances += """
-                                
-                                extension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}
-                                """
+                                conformances += "\nextension \(sequenceType.name): \(elementType.sequenceNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}"
+                                if isCollectionTypes {
+                                    conformances += "\nextension \(sequenceType.name): \(elementType.collectionNameOptional) where \(sequenceType.generic) == \(elementType.name)? {}"
+                                }
                             }
                         }
                         
                         if isRestricted {
-                            conformances += """
-
-                            #endif
-                            """
+                            conformances += "\n#endif"
                         }
                     }
-                
+
                 if added {
                     conformances += "\n"
                 }
             }
-
-        try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
     }
 }
 
