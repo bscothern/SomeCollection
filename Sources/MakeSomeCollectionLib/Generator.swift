@@ -160,8 +160,8 @@ public struct Generator {
                         // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
                         self.generateAcrossStandardLibrary ||
                             !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) ||
-                            !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name }) ||
-                            !StandardLibraryCollectionType.values.contains(where: { $0.name == sequenceType.name })
+                            (!isCollectionTypes && !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name })) ||
+                            (isCollectionTypes && !StandardLibraryCollectionType.values.contains(where: { $0.name == sequenceType.name }))
                     }
                     .forEach { elementType in
                         added = true
