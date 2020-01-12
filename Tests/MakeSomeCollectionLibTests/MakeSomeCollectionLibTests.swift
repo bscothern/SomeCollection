@@ -23,7 +23,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
                 excluding: ["String", "Error"]
             ),
         ]
-        
+
         let collections: Set<CollectionType> = [
             "TestCollection",
             .init(
@@ -35,7 +35,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
                 excluding: ["String", "Error"]
             ),
         ]
-        
+
         let elements: Set<ElementType> = [
             "TestElement",
             .init(
@@ -59,7 +59,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             collectionTypes: collections.union(StandardLibraryCollectionType.values),
             elementTypes: elements.union(StandardLibraryElementType.values)
         )
-        
+
         let generator = Generator(matrix: matrix)
         do {
             try generator.generate(
@@ -71,7 +71,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             XCTFail("Generator Error: \(error)")
         }
     }
-    
+
     func testCustomMakeSomeCollection() throws {
         // Setup for test
         let fileManager = FileManager.default
@@ -82,18 +82,18 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             fileManager.changeCurrentDirectoryPath(sourceRoot) else {
                 throw Generator.Error.unableToFindPacakgeRoot
         }
-        
+
         makeTestOutput()
-        
+
         var protocolsOutput = try! String(contentsOfFile: "Tests/OUTPUT/TESTProtocols.swift")
         protocolsOutput = protocolsOutput.components(separatedBy: "import SomeCollection").last!
         areTheSame(expectedProtocols, protocolsOutput)
-        
+
         var conformancesOutput = try! String(contentsOfFile: "Tests/OUTPUT/TESTConformances.swift")
         conformancesOutput = conformancesOutput.components(separatedBy: "import SomeCollection").last!
         areTheSame(expectedConformances, conformancesOutput)
     }
-    
+
     func areTheSame(_ expected: String, _ result: String, line: UInt = #line) {
         zip(expected.split(separator: "\n", omittingEmptySubsequences: true), result.split(separator: "\n", omittingEmptySubsequences: true)).forEach { expected, result in
             XCTAssertEqual(expected, result, line: line)
@@ -112,7 +112,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     public protocol LazySequenceOfOptionalTestElement: LazySequenceProtocol, SequenceOfOptionalTestElement {}
     public protocol LazyCollectionOfOptionalTestElement: LazyCollectionProtocol, CollectionOfOptionalTestElement {}
     """
-    
+
     let expectedConformances = """
     import TestImport
 

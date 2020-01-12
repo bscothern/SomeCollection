@@ -23,7 +23,7 @@ public struct Generator {
     var date: String { String(Date().description.split(separator: " ").first!) }
 
     // MARK: - Init
-    
+
     /// Create a `Generator`.
     ///
     /// - Parameter matrix: The matrix of `Seqeunce`, `Collection`, and `Element` types to use.
@@ -48,7 +48,7 @@ public struct Generator {
     }
 
     // MARK: Public
-    
+
     /// Run the generator.
     ///
     /// - Parameters:
@@ -82,23 +82,23 @@ public struct Generator {
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
-        
+
         """
-        
+
         if !generateAcrossStandardLibrary {
             protocols += "\nimport SomeCollection"
         }
-        imports.forEach { `import` in
+        imports.forEach { `import` in //swiftlint:disable:this unused_closure_parameter
             protocols += "\nimport \(`import`)"
         }
         if !generateAcrossStandardLibrary || !imports.isEmpty {
             protocols += "\n"
         }
-        
+
         matrix.elementTypes.lazy
             .filter { !$0.applicablePlatforms.isEmpty }
             .filter { elementType in
-                self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })
+                self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains { $0.name == elementType.name }
             }
             .forEach { elementType in
                 protocols += "\n"
@@ -115,7 +115,7 @@ public struct Generator {
                         }
                     protocols += "\n"
                 }
-                
+
                 protocols += """
                 public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
                 public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
@@ -126,7 +126,7 @@ public struct Generator {
                 public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
                 public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
                 """
-                
+
                 if isRestricted {
                     protocols += "\n#endif"
                 }
@@ -145,13 +145,13 @@ public struct Generator {
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
-        
+
         """
-        
+
         if !generateAcrossStandardLibrary {
             conformances += "\nimport SomeCollection"
         }
-        imports.forEach { `import` in
+        imports.forEach { `import` in //swiftlint:disable:this unused_closure_parameter
             conformances += "\nimport \(`import`)"
         }
         if !generateAcrossStandardLibrary || !imports.isEmpty {
@@ -190,9 +190,9 @@ public struct Generator {
                         // This allows either the SequenceType/CollectionType or the ElementType to be part of the standard library while the other isn't.
                         // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
                         self.generateAcrossStandardLibrary ||
-                            !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name }) ||
-                            (!isCollectionTypes && !StandardLibrarySequenceType.values.contains(where: { $0.name == sequenceType.name })) ||
-                            (isCollectionTypes && !StandardLibraryCollectionType.values.contains(where: { $0.name == sequenceType.name }))
+                            !StandardLibraryElementType.values.contains { $0.name == elementType.name } ||
+                            (!isCollectionTypes && !StandardLibrarySequenceType.values.contains { $0.name == sequenceType.name }) ||
+                            (isCollectionTypes && !StandardLibraryCollectionType.values.contains { $0.name == sequenceType.name })
                     }
                     .forEach { elementType in
                         added = true
@@ -243,7 +243,6 @@ public struct Generator {
                         conformancesToApply.forEach {
                             conformances += "\nextension \(sequenceType.name): \($0) {}"
                         }
-                            
 
                         if isRestricted {
                             conformances += "\n#endif"
@@ -263,7 +262,7 @@ fileprivate extension ElementType {
 
     var sequenceNameOptional: String { "SequenceOfOptional\(simpleName)" }
     var collectionNameOptional: String { "CollectionOfOptional\(simpleName)" }
-    
+
     var lazySequenceName: String { "Lazy\(sequenceName)" }
     var lazyCollectionName: String { "Lazy\(collectionName)" }
 

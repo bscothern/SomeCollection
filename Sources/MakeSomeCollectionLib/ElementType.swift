@@ -19,7 +19,7 @@ public struct ElementType: Hashable {
     let includedCollectionTypes: Set<CollectionType>
 
     var simpleName: String { name.replacingOccurrences(of: ".", with: "") }
-    
+
     /// Creates an `ElementType`.
     ///
     /// - Parameters:

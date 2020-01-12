@@ -19,7 +19,7 @@ public struct SequenceType: Hashable {
     let skipOptional: Bool
     let genericName: String
     let isLazy: Bool
-    
+
     /// Creates a `SeqeunceType` instance.
     ///
     /// - Important: Comparisons in Generator only check name.
