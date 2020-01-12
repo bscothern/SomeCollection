@@ -1,18 +1,17 @@
+//
+//  MakeSomeCollectionLibTests.swift
+//  SomeCollection
+//
+//  Created by Braden Scothern on 1/10/20.
+//  Copyright © 2020 Braden Scothern. All rights reserved.
+//
+
 import Foundation
 import MakeSomeCollectionLib
 import XCTest
 
 final class MakeSomeCollectionLibTests: XCTestCase {
-    func testExample() throws {
-        let fileManager = FileManager.default
-        let originalDirectory = fileManager.currentDirectoryPath
-        defer { fileManager.changeCurrentDirectoryPath(originalDirectory) }
-        guard let sourceRoot = fileManager.currentDirectoryPath.components(separatedBy: ".build/").first,
-            !sourceRoot.isEmpty,
-            fileManager.changeCurrentDirectoryPath(sourceRoot) else {
-                throw Generator.Error.unableToFindPacakgeRoot
-        }
-        
+    func makeTestOutput() {
         let sequences: Set<SequenceType> = [
             "TestSequence",
             .init(
@@ -71,15 +70,27 @@ final class MakeSomeCollectionLibTests: XCTestCase {
         } catch {
             XCTFail("Generator Error: \(error)")
         }
+    }
+    
+    func testCustomMakeSomeCollection() throws {
+        // Setup for test
+        let fileManager = FileManager.default
+        let originalDirectory = fileManager.currentDirectoryPath
+        defer { fileManager.changeCurrentDirectoryPath(originalDirectory) }
+        guard let sourceRoot = fileManager.currentDirectoryPath.components(separatedBy: ".build/").first,
+            !sourceRoot.isEmpty,
+            fileManager.changeCurrentDirectoryPath(sourceRoot) else {
+                throw Generator.Error.unableToFindPacakgeRoot
+        }
+        
+        makeTestOutput()
         
         var protocolsOutput = try! String(contentsOfFile: "Tests/OUTPUT/TESTProtocols.swift")
         protocolsOutput = protocolsOutput.components(separatedBy: "import SomeCollection").last!
-        
         areTheSame(expectedProtocols, protocolsOutput)
         
         var conformancesOutput = try! String(contentsOfFile: "Tests/OUTPUT/TESTConformances.swift")
         conformancesOutput = conformancesOutput.components(separatedBy: "import SomeCollection").last!
-        
         areTheSame(expectedConformances, conformancesOutput)
     }
     

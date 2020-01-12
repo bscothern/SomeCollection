@@ -119,6 +119,7 @@ If the standard library types are provided or not your `Sequence` and `Collectio
 `SeqeunceType`, `CollectionType`, and `ElementType` all support customization to limit the platforms and/or other types they work with.
 These can be accessed thorugh calling the initializer directly instead of just specifying the name as a `String` as shown in the example above.
 The customization points have been documented so it is easy to work with as you support your own types.
+If you want a more complex example look at `makeTestOutput()` in `MakeSomeCollectionLibTests.swift` which is very similar to what a `main.swift` would need to be to use `MakeSomeCollectionLib`.
 
 ## A Sequence/Collection/Element Type is Missing!?
 I have almost certainly missed types and new ones can be added to the standard library each release.
