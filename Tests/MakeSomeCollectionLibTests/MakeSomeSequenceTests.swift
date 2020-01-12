@@ -51,7 +51,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             ),
             .init(
                 name: "TestElement4",
-                restrictedTo: [.iOS]
+                restrictedTo: [.macOS, .iOS]
             ),
         ]
 
@@ -88,7 +88,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             XCTAssertEqual(expected, result, line: line)
         }
     }
-    
+
     let expectedProtocols = """
     import TestImport
 
@@ -117,7 +117,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension AnyBidirectionalCollection: CollectionOfTestElement3 where Element == TestElement3 {}
     extension AnyBidirectionalCollection: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension AnyBidirectionalCollection: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension AnyBidirectionalCollection: SequenceOfTestElement4 where Element == TestElement4 {}
     extension AnyBidirectionalCollection: CollectionOfTestElement4 where Element == TestElement4 {}
     extension AnyBidirectionalCollection: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -136,7 +136,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension AnyCollection: CollectionOfTestElement3 where Element == TestElement3 {}
     extension AnyCollection: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension AnyCollection: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension AnyCollection: SequenceOfTestElement4 where Element == TestElement4 {}
     extension AnyCollection: CollectionOfTestElement4 where Element == TestElement4 {}
     extension AnyCollection: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -151,7 +151,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension Array: CollectionOfTestElement2 where Element == TestElement2 {}
     extension Array: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension Array: CollectionOfOptionalTestElement2 where Element == TestElement2? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension Array: SequenceOfTestElement4 where Element == TestElement4 {}
     extension Array: CollectionOfTestElement4 where Element == TestElement4 {}
     extension Array: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -170,7 +170,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension ArraySlice: CollectionOfTestElement3 where Element == TestElement3 {}
     extension ArraySlice: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension ArraySlice: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension ArraySlice: SequenceOfTestElement4 where Element == TestElement4 {}
     extension ArraySlice: CollectionOfTestElement4 where Element == TestElement4 {}
     extension ArraySlice: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -189,7 +189,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension CollectionOfOne: CollectionOfTestElement3 where Element == TestElement3 {}
     extension CollectionOfOne: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension CollectionOfOne: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension CollectionOfOne: SequenceOfTestElement4 where Element == TestElement4 {}
     extension CollectionOfOne: CollectionOfTestElement4 where Element == TestElement4 {}
     extension CollectionOfOne: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -208,7 +208,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension ContiguousArray: CollectionOfTestElement3 where Element == TestElement3 {}
     extension ContiguousArray: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension ContiguousArray: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension ContiguousArray: SequenceOfTestElement4 where Element == TestElement4 {}
     extension ContiguousArray: CollectionOfTestElement4 where Element == TestElement4 {}
     extension ContiguousArray: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -230,7 +230,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension Dictionary.Values: CollectionOfTestElement3 where Element == TestElement3 {}
     extension Dictionary.Values: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension Dictionary.Values: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension Dictionary.Values: SequenceOfTestElement4 where Element == TestElement4 {}
     extension Dictionary.Values: CollectionOfTestElement4 where Element == TestElement4 {}
     extension Dictionary.Values: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -249,7 +249,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension EmptyCollection: CollectionOfTestElement3 where Element == TestElement3 {}
     extension EmptyCollection: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension EmptyCollection: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension EmptyCollection: SequenceOfTestElement4 where Element == TestElement4 {}
     extension EmptyCollection: CollectionOfTestElement4 where Element == TestElement4 {}
     extension EmptyCollection: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -268,7 +268,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension ReversedCollection: CollectionOfTestElement3 where Element == TestElement3 {}
     extension ReversedCollection: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension ReversedCollection: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension ReversedCollection: SequenceOfTestElement4 where Element == TestElement4 {}
     extension ReversedCollection: CollectionOfTestElement4 where Element == TestElement4 {}
     extension ReversedCollection: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -287,7 +287,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension Slice: CollectionOfTestElement3 where Element == TestElement3 {}
     extension Slice: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension Slice: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension Slice: SequenceOfTestElement4 where Element == TestElement4 {}
     extension Slice: CollectionOfTestElement4 where Element == TestElement4 {}
     extension Slice: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -364,7 +364,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension TestCollection: CollectionOfTestElement3 where Element == TestElement3 {}
     extension TestCollection: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension TestCollection: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension TestCollection: SequenceOfTestElement4 where Element == TestElement4 {}
     extension TestCollection: CollectionOfTestElement4 where Element == TestElement4 {}
     extension TestCollection: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -474,7 +474,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension TestCollection3: CollectionOfTestElement3 where Element == TestElement3 {}
     extension TestCollection3: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension TestCollection3: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension TestCollection3: SequenceOfTestElement4 where Element == TestElement4 {}
     extension TestCollection3: CollectionOfTestElement4 where Element == TestElement4 {}
     extension TestCollection3: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -525,7 +525,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension UnsafeMutableBufferPointer: CollectionOfTestElement3 where Element == TestElement3 {}
     extension UnsafeMutableBufferPointer: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension UnsafeMutableBufferPointer: CollectionOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension UnsafeMutableBufferPointer: SequenceOfTestElement4 where Element == TestElement4 {}
     extension UnsafeMutableBufferPointer: CollectionOfTestElement4 where Element == TestElement4 {}
     extension UnsafeMutableBufferPointer: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
@@ -538,7 +538,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension AnyIterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension AnyIterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension AnyIterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension AnyIterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension AnyIterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -547,7 +547,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension AnySequence: SequenceOfOptionalTestElement where Element == TestElement? {}
     extension AnySequence: SequenceOfTestElement2 where Element == TestElement2 {}
     extension AnySequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension AnySequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension AnySequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -558,7 +558,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension DropFirstSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension DropFirstSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension DropFirstSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension DropFirstSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension DropFirstSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -569,7 +569,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension DropWhileSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension DropWhileSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension DropWhileSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension DropWhileSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension DropWhileSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -580,7 +580,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension EmptyCollection.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension EmptyCollection.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension EmptyCollection.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension EmptyCollection.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension EmptyCollection.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -591,7 +591,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension FlattenSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension FlattenSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension FlattenSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension FlattenSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension FlattenSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -602,7 +602,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension FlattenSequence.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension FlattenSequence.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension FlattenSequence.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension FlattenSequence.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension FlattenSequence.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -613,7 +613,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension IndexingIterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension IndexingIterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension IndexingIterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension IndexingIterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension IndexingIterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -624,7 +624,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension JoinedSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension JoinedSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension JoinedSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension JoinedSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension JoinedSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -641,7 +641,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyDropWhileSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension LazyDropWhileSequence: LazySequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyDropWhileSequence: LazySequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyDropWhileSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyDropWhileSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     extension LazyDropWhileSequence: LazySequenceOfTestElement4 where Element == TestElement4 {}
@@ -660,7 +660,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyFilterSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension LazyFilterSequence: LazySequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyFilterSequence: LazySequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyFilterSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyFilterSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     extension LazyFilterSequence: LazySequenceOfTestElement4 where Element == TestElement4 {}
@@ -673,7 +673,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyFilterSequence.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension LazyFilterSequence.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyFilterSequence.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyFilterSequence.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyFilterSequence.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -690,7 +690,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyMapSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension LazyMapSequence: LazySequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyMapSequence: LazySequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyMapSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyMapSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     extension LazyMapSequence: LazySequenceOfTestElement4 where Element == TestElement4 {}
@@ -703,7 +703,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyMapSequence.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension LazyMapSequence.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyMapSequence.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyMapSequence.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyMapSequence.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -720,7 +720,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyPrefixWhileSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension LazyPrefixWhileSequence: LazySequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyPrefixWhileSequence: LazySequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyPrefixWhileSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyPrefixWhileSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     extension LazyPrefixWhileSequence: LazySequenceOfTestElement4 where Element == TestElement4 {}
@@ -733,7 +733,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension LazyPrefixWhileSequence.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazyPrefixWhileSequence.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazyPrefixWhileSequence.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -750,7 +750,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension LazySequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
     extension LazySequence: LazySequenceOfTestElement3 where Element == TestElement3 {}
     extension LazySequence: LazySequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension LazySequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension LazySequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     extension LazySequence: LazySequenceOfTestElement4 where Element == TestElement4 {}
@@ -763,7 +763,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension PrefixSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension PrefixSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension PrefixSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension PrefixSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension PrefixSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -776,7 +776,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension ReversedCollection.Iterator: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension ReversedCollection.Iterator: SequenceOfTestElement3 where Element == TestElement3 {}
     extension ReversedCollection.Iterator: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension ReversedCollection.Iterator: SequenceOfTestElement4 where Element == TestElement4 {}
     extension ReversedCollection.Iterator: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -817,7 +817,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension TestSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension TestSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension TestSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension TestSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension TestSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -875,7 +875,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension TestSequence3: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension TestSequence3: SequenceOfTestElement3 where Element == TestElement3 {}
     extension TestSequence3: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension TestSequence3: SequenceOfTestElement4 where Element == TestElement4 {}
     extension TestSequence3: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -902,7 +902,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension UnfoldSequence: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension UnfoldSequence: SequenceOfTestElement3 where Element == TestElement3 {}
     extension UnfoldSequence: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension UnfoldSequence: SequenceOfTestElement4 where Element == TestElement4 {}
     extension UnfoldSequence: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif
@@ -913,7 +913,7 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension UnsafeBufferPointer: SequenceOfOptionalTestElement2 where Element == TestElement2? {}
     extension UnsafeBufferPointer: SequenceOfTestElement3 where Element == TestElement3 {}
     extension UnsafeBufferPointer: SequenceOfOptionalTestElement3 where Element == TestElement3? {}
-    #if os(iOS)
+    #if os(iOS) || os(macOS)
     extension UnsafeBufferPointer: SequenceOfTestElement4 where Element == TestElement4 {}
     extension UnsafeBufferPointer: SequenceOfOptionalTestElement4 where Element == TestElement4? {}
     #endif

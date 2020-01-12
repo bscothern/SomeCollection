@@ -197,10 +197,10 @@ public struct Generator {
                     .forEach { elementType in
                         added = true
 
-                        let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+                        let isRestricted = sequenceType.applicablePlatforms.count != Platform.allCases.count || elementType.applicablePlatforms.count != Platform.allCases.count
                         if isRestricted {
+                            let platforms = sequenceType.applicablePlatforms.intersection(elementType.applicablePlatforms).sorted()
                             conformances += "\n#if"
-                            let platforms = elementType.applicablePlatforms.sorted()
                             conformances += " os(\(platforms.first!.rawValue))"
 
                             platforms
