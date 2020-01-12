@@ -127,4 +127,4 @@ I am planning on adding support for Foundation types right away and should have 
 They will likely be a part of this same package but in a different library which will likely be named: `SomeCollectionOfFoundation`.
 
 ## Some Other Bug/Feature Request
-Open up an issue with the bug or feature request.
+Open up an issue on github.
