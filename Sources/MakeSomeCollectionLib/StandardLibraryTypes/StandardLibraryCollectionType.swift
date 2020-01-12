@@ -14,23 +14,23 @@ public enum StandardLibraryCollectionType {
         // Collection Types
         "AnyCollection",
         .init(
-            "ClosedRange",
+            name: "ClosedRange",
             limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"],
             skipOptional: true,
             genericName: "Bound"
         ),
         .init(
-            "DefaultIndices",
+            name: "DefaultIndices",
             limitedTo: StandardLibraryElementType.values.subtracting(["Bool", "Error"]),
             skipOptional: true
         ),
 //        "Dictionary"
         .init(
-            "Dictionary.Keys",
+            name: "Dictionary.Keys",
             limitedTo: StandardLibraryElementType.values.subtracting(["Error"])
         ),
         .init(
-            "Set",
+            name: "Set",
             limitedTo: StandardLibraryElementType.values.subtracting(["Error"])
         ),
         "Slice",
@@ -39,43 +39,43 @@ public enum StandardLibraryCollectionType {
         "AnyBidirectionalCollection",
         "ReversedCollection",
         .init(
-            "String",
+            name: "String",
             limitedTo: ["Character"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "String.UnicodeScalarView",
+            name: "String.UnicodeScalarView",
             limitedTo: ["Unicode.Scalar"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "String.UTF16View",
+            name: "String.UTF16View",
             limitedTo: ["UTF16.CodeUnit"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "String.UTF8View",
+            name: "String.UTF8View",
             limitedTo: ["UTF8.CodeUnit"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "Substring.UnicodeScalarView",
+            name: "Substring.UnicodeScalarView",
             limitedTo: ["Unicode.Scalar"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "Substring.UTF16View",
+            name: "Substring.UTF16View",
             limitedTo: ["String.UTF16View.Element"],
             skipWhereClause: true,
             skipOptional: true
         ),
         .init(
-            "Substring.UTF8View",
+            name: "Substring.UTF8View",
             limitedTo: ["String.UTF8View.Element"],
             skipWhereClause: true,
             skipOptional: true
@@ -90,7 +90,7 @@ public enum StandardLibraryCollectionType {
         "EmptyCollection",
         "UnsafeMutableBufferPointer",
         .init(
-            "UnsafeMutableRawBufferPointer",
+            name: "UnsafeMutableRawBufferPointer",
             limitedTo: ["UInt8"],
             skipWhereClause: true,
             skipOptional: true

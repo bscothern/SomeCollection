@@ -31,7 +31,7 @@ public struct ElementType: Hashable {
     ///   - excludedCollectionTypes: A set of `Collection` types that don't support this type.
     ///   - includedSequenceTypes: A set of `Sequence` types that should act as if they support this type is part of its `limitedToElementTypes` property.
     ///   - includedCollectionTypes: A set of `Collection` types that should act as if they support this type is part of its `limitedToElementTypes` property.
-    public init(_ name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases), excludedSequenceTypes: Set<SequenceType> = [], excludedCollectionTypes: Set<CollectionType> = [], includedSequenceTypes: Set<SequenceType> = [], includedCollectionTypes: Set<CollectionType> = []) {
+    public init(name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases), excludedSequenceTypes: Set<SequenceType> = [], excludedCollectionTypes: Set<CollectionType> = [], includedSequenceTypes: Set<SequenceType> = [], includedCollectionTypes: Set<CollectionType> = []) {
         self.name = name
         self.applicablePlatforms = applicablePlatforms
         self.excludedSequenceTypes = excludedSequenceTypes
@@ -50,6 +50,6 @@ extension ElementType: Comparable {
 extension ElementType: ExpressibleByStringLiteral {
     @inlinable
     public init(stringLiteral: String) {
-        self.init(stringLiteral)
+        self.init(name: stringLiteral)
     }
 }

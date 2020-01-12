@@ -25,47 +25,47 @@ public enum StandardLibrarySequenceType {
             "LazyDropWhileSequence",
             "LazyFilterSequence",
             .init(
-                "LazyFilterSequence.Iterator",
+                name: "LazyFilterSequence.Iterator",
                 isLazy: false
             ),
             .init(
-                "LazyMapSequence.Iterator",
+                name: "LazyMapSequence.Iterator",
                 isLazy: false
             ),
             "LazyPrefixWhileSequence",
             .init(
-                "LazyPrefixWhileSequence.Iterator",
+                name: "LazyPrefixWhileSequence.Iterator",
                 isLazy: false
             ),
             "LazySequence",
             .init(
-                "PartialRangeFrom",
+                name: "PartialRangeFrom",
                 limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"],
                 skipOptional: true,
                 genericName: "Bound"
             ),
             "PrefixSequence",
             .init(
-                "Range",
+                name: "Range",
                 limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt"],
                 skipOptional: true,
                 genericName: "Bound"
             ),
             "ReversedCollection.Iterator",
             .init(
-                "StrideThrough",
+                name: "StrideThrough",
                 limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt", "Float", "Double", "Float80", "UTF16.CodeUnit", "UTF8.CodeUnit", "String.UTF16View.Element"],
                 skipOptional: true
             ),
             .init(
-                "StrideTo",
+                name: "StrideTo",
                 limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt", "Float", "Double", "Float80", "UTF16.CodeUnit", "UTF8.CodeUnit", "String.UTF16View.Element"],
                 skipOptional: true
             ),
             "UnfoldSequence",
             "UnsafeBufferPointer",
             .init(
-                "UnsafeMutableRawBufferPointer.Iterator",
+                name: "UnsafeMutableRawBufferPointer.Iterator",
                 limitedTo: ["UInt8"],
                 skipWhereClause: true,
                 skipOptional: true

@@ -95,7 +95,7 @@ let elements: Set<ElementType> = [
 let matrix = GenerationMatrix(
 sequenceTypes: sequences.union(StandardLibrarySequenceType.values),
     collectionTypes: collections.union(StandardLibraryCollectionType.values),
-    elementTYpes: elements.union(StandardLibraryElementType.values)
+    elementTypes: elements.union(StandardLibraryElementType.values)
 )
 
 let generator = Generator(matrix: matrix)

@@ -16,35 +16,41 @@ final class MakeSomeCollectionLibTests: XCTestCase {
         let sequences: Set<SequenceType> = [
             "TestSequence",
             .init(
-                "TestSequence2",
+                name: "TestSequence2",
                 limitedTo: ["Bool", "Int"]
             ),
             .init(
-                "TestSequence3",
+                name: "TestSequence3",
                 excluding: ["String", "Error"]
             ),
         ]
         
         let collections: Set<CollectionType> = [
             "TestCollection",
-            .init("TestCollection2", limitedTo: ["Bool", "Int"]),
-            .init("TestCollection3", excluding: ["String", "Error"]),
+            .init(
+                name: "TestCollection2",
+                limitedTo: ["Bool", "Int"]
+            ),
+            .init(
+                name: "TestCollection3",
+                excluding: ["String", "Error"]
+            ),
         ]
         
         let elements: Set<ElementType> = [
             "TestElement",
             .init(
-                "TestElement2",
+                name: "TestElement2",
                 includedSequenceTypes: ["Range"],
                 includedCollectionTypes: ["DefaultIndices"]
             ),
             .init(
-                "TestElement3",
+                name: "TestElement3",
                 excludedSequenceTypes: ["AnySequence"],
                 excludedCollectionTypes: ["Array"]
             ),
             .init(
-                "TestElement4",
+                name: "TestElement4",
                 restrictedTo: [.iOS]
             ),
         ]

@@ -36,7 +36,7 @@ public struct SequenceType: Hashable {
     ///   - isLazy: Can be used to explicitly mark the `Sequence` as lazy or not.
     ///       If it is not specified by providing `nil` then this property is synthesized as the value of `name.contains("Lazy")`
     @inlinable
-    public init(_ name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, genericName: String = "Element", isLazy: Bool? = nil) {
+    public init(name: String, limitedTo limitedToElementTypes: Set<ElementType> = [], excluding excludedElementTypes: Set<ElementType> = [], skipWhereClause: Bool = false, skipOptional: Bool = false, genericName: String = "Element", isLazy: Bool? = nil) {
         self.name = name
         self.limitedToElementTypes = limitedToElementTypes
         self.excludedElementTypes = excludedElementTypes
@@ -56,6 +56,6 @@ extension SequenceType: Comparable {
 extension SequenceType: ExpressibleByStringLiteral {
     @inlinable
     public init(stringLiteral: String) {
-        self.init(stringLiteral)
+        self.init(name: stringLiteral)
     }
 }
