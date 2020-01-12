@@ -9,16 +9,20 @@
 public struct ElementType: Hashable {
     let name: String
     let applicablePlatforms: Set<Platform>
-    let excludedSequencesTypes: Set<SequenceType>
+    let excludedSequenceTypes: Set<SequenceType>
     let excludedCollectionTypes: Set<CollectionType>
+    let includedSequenceTypes: Set<SequenceType>
+    let includedCollectionTypes: Set<CollectionType>
 
     var simpleName: String { name.replacingOccurrences(of: ".", with: "") }
 
-    public init(_ name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases), excludedSequencesTypes: Set<SequenceType> = [], excludedCollectionTypes: Set<CollectionType> = []) {
+    public init(_ name: String, restrictedTo applicablePlatforms: Set<Platform> = Set(Platform.allCases), excludedSequenceTypes: Set<SequenceType> = [], excludedCollectionTypes: Set<CollectionType> = [], includedSequenceTypes: Set<SequenceType> = [], includedCollectionTypes: Set<CollectionType> = []) {
         self.name = name
         self.applicablePlatforms = applicablePlatforms
-        self.excludedSequencesTypes = excludedSequencesTypes
+        self.excludedSequenceTypes = excludedSequenceTypes
         self.excludedCollectionTypes = excludedCollectionTypes
+        self.includedSequenceTypes = includedSequenceTypes
+        self.includedCollectionTypes = includedCollectionTypes
     }
 }
 

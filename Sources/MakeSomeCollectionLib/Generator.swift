@@ -154,13 +154,16 @@ public struct Generator {
                 matrix.elementTypes
                     .lazy
                     .filter { elementType in
-                        sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains { $0.name == elementType.name }
+                        // Limited To / Included Overrides
+                        sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains { $0.name == elementType.name } || (isCollectionTypes ? elementType.includedCollectionTypes : elementType.includedSequenceTypes).contains { $0.name == sequenceType.name }
                     }
                     .filter { elementType in
+                        // Excluded By SequenceType
                         !sequenceType.excludedElementTypes.contains { $0.name == elementType.name }
                     }
                     .filter { elementType in
-                        !(isCollectionTypes ? elementType.excludedCollectionTypes : elementType.excludedSequencesTypes)
+                        // Excluded By ElementType
+                        !(isCollectionTypes ? elementType.excludedCollectionTypes : elementType.excludedSequenceTypes)
                             .contains { invalidSequenceType in
                                 invalidSequenceType.name == sequenceType.name
                             }
