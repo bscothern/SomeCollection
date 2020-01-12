@@ -1,3 +1,6 @@
+# Test Files
+Tests/OUTPUT/*
+
 # macOS
 .DS_Store
 

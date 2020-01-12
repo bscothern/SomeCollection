@@ -42,7 +42,27 @@ final class MakeSomeCollectionLibTests: XCTestCase {
             XCTFail("Generator Error: \(error)")
         }
         
-        let expectedOutput = """
-        """
+        var protocolsOutput = try! String(contentsOfFile: "Tests/OUTPUT/TESTProtocols.swift")
+        protocolsOutput = protocolsOutput.components(separatedBy: "import SomeCollection").last!
+        
+        zip(expectedProtocols.split(separator: "\n", omittingEmptySubsequences: true), protocolsOutput.split(separator: "\n", omittingEmptySubsequences: true)).forEach { expected, result in
+            XCTAssertEqual(expected, result)
+        }
     }
+    
+    let expectedProtocols = """
+    import TestImport
+
+    public protocol SequenceOfTestElement: Sequence where Element == TestElement {}
+    public protocol CollectionOfTestElement: Collection, SequenceOfTestElement {}
+    public protocol SequenceOfOptionalTestElement: Sequence where Element == TestElement? {}
+    public protocol CollectionOfOptionalTestElement: Collection, SequenceOfOptionalTestElement {}
+    public protocol LazySequenceOfTestElement: LazySequenceProtocol, SequenceOfTestElement {}
+    public protocol LazyCollectionOfTestElement: LazyCollectionProtocol, CollectionOfTestElement {}
+    public protocol LazySequenceOfOptionalTestElement: LazySequenceProtocol, SequenceOfOptionalTestElement {}
+    public protocol LazyCollectionOfOptionalTestElement: LazyCollectionProtocol, CollectionOfOptionalTestElement {}
+    """
+    
+    let expectedConformances = """
+    """
 }
