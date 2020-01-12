@@ -121,6 +121,9 @@ These can be accessed thorugh calling the initializer directly instead of just s
 The customization points have been documented so it is easy to work with as you support your own types.
 If you want a more complex example look at `makeTestOutput()` in `MakeSomeCollectionLibTests.swift` which is very similar to what a `main.swift` would need to be to use `MakeSomeCollectionLib`.
 
+All generated code is stable in its ordering as long as it is given the same inputs.
+This helps to cut down on conflicts and identifying what changes.
+
 ## A Sequence/Collection/Element Type is Missing!?
 I have almost certainly missed types and new ones can be added to the standard library each release.
 In this case you can either open an issue or PR.
