@@ -21,17 +21,17 @@ public enum StandardLibraryCollectionType {
         ),
         .init(
             "DefaultIndices",
-            excluding: ["Bool", "Error"],
+            limitedTo: StandardLibraryElementType.values.subtracting(["Bool", "Error"]),
             skipOptional: true
         ),
 //        "Dictionary"
         .init(
             "Dictionary.Keys",
-            excluding: ["Error"]
+            limitedTo: StandardLibraryElementType.values.subtracting(["Error"])
         ),
         .init(
             "Set",
-            excluding: ["Error"]
+            limitedTo: StandardLibraryElementType.values.subtracting(["Error"])
         ),
         "Slice",
 

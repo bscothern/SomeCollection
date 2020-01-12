@@ -153,8 +153,12 @@ public struct Generator {
                 var added = false
                 matrix.elementTypes
                     .lazy
-                    .filter { sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains($0) }
-                    .filter { !sequenceType.excludedElementTypes.contains($0) }
+                    .filter { elementType in
+                        sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains { $0.name == elementType.name }
+                    }
+                    .filter { elementType in
+                        !sequenceType.excludedElementTypes.contains { $0.name == elementType.name }
+                    }
                     .filter { elementType in
                         !(isCollectionTypes ? elementType.excludedCollectionTypes : elementType.excludedSequencesTypes)
                             .contains { invalidSequenceType in

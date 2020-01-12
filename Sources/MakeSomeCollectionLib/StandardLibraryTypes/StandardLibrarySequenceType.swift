@@ -54,12 +54,12 @@ public enum StandardLibrarySequenceType {
             "ReversedCollection.Iterator",
             .init(
                 "StrideThrough",
-                excluding: ["Bool", "Error", "String", "Substring", "Character", "Unicode.Scalar"],
+                limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt", "Float", "Double", "Float80", "UTF16.CodeUnit", "UTF8.CodeUnit", "String.UTF16View.Element"],
                 skipOptional: true
             ),
             .init(
                 "StrideTo",
-                excluding: ["Bool", "Error", "String", "Substring", "Character", "Unicode.Scalar"],
+                limitedTo: ["Int8", "Int16", "Int32", "Int64", "Int", "UInt8", "UInt16", "UInt32", "UInt64", "UInt", "Float", "Double", "Float80", "UTF16.CodeUnit", "UTF8.CodeUnit", "String.UTF16View.Element"],
                 skipOptional: true
             ),
             "UnfoldSequence",

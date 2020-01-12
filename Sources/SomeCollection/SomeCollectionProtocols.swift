@@ -2,7 +2,7 @@
 // SomeCollectionProtocols.swift
 //
 // Auto Generated
-// MakeSomeCollectionLib 0.2.0
+// MakeSomeCollectionLib 0.3.0
 // 2020-01-12
 //
 
