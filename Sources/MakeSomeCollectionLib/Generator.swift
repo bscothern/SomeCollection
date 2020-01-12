@@ -156,6 +156,12 @@ public struct Generator {
                     .filter { sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains($0) }
                     .filter { !sequenceType.excludedElementTypes.contains($0) }
                     .filter { elementType in
+                        !(isCollectionTypes ? elementType.excludedCollectionTypes : elementType.excludedSequencesTypes)
+                            .contains { invalidSequenceType in
+                                invalidSequenceType.name == sequenceType.name
+                            }
+                    }
+                    .filter { elementType in
                         // This allows either the SequenceType/CollectionType or the ElementType to be part of the standard library while the other isn't.
                         // If they are both in the standard library only generateAcrossStandardLibrary will allow the code to be generated for this pair.
                         self.generateAcrossStandardLibrary ||

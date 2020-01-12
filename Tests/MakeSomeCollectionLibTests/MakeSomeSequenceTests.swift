@@ -22,9 +22,18 @@ final class MakeSomeCollectionLibTests: XCTestCase {
         ]
         
         let elements: Set<ElementType> = [
-            "TestElement"
+            .init(
+                "TestElement",
+                excludedSequencesTypes: [
+                    "StrideThrough",
+                    "StrideTo",
+                ],
+                excludedCollectionTypes: [
+                    "DefaultIndices",
+                ]
+            )
         ]
-        
+
         let matrix = GenerationMatrix(
             sequenceTypes: sequences.union(StandardLibrarySequenceType.values),
             collectionTypes: collections.union(StandardLibraryCollectionType.values),
@@ -104,9 +113,6 @@ final class MakeSomeCollectionLibTests: XCTestCase {
     extension ContiguousArray: CollectionOfTestElement where Element == TestElement {}
     extension ContiguousArray: SequenceOfOptionalTestElement where Element == TestElement? {}
     extension ContiguousArray: CollectionOfOptionalTestElement where Element == TestElement? {}
-
-    extension DefaultIndices: SequenceOfTestElement where Element == TestElement {}
-    extension DefaultIndices: CollectionOfTestElement where Element == TestElement {}
 
     extension Dictionary.Keys: SequenceOfTestElement where Element == TestElement {}
     extension Dictionary.Keys: CollectionOfTestElement where Element == TestElement {}
@@ -304,10 +310,6 @@ final class MakeSomeCollectionLibTests: XCTestCase {
 
     extension ReversedCollection.Iterator: SequenceOfTestElement where Element == TestElement {}
     extension ReversedCollection.Iterator: SequenceOfOptionalTestElement where Element == TestElement? {}
-
-    extension StrideThrough: SequenceOfTestElement where Element == TestElement {}
-
-    extension StrideTo: SequenceOfTestElement where Element == TestElement {}
 
     extension TestSequence: SequenceOfBool where Element == Bool {}
     extension TestSequence: SequenceOfOptionalBool where Element == Bool? {}

@@ -8,7 +8,7 @@
 
 internal struct Version: CustomStringConvertible {
     let major = 0
-    let minor = 2
+    let minor = 3
     let patch = 0
 
     var description: String { "\(major).\(minor).\(patch)" }
