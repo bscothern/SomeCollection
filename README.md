@@ -99,7 +99,11 @@ sequenceTypes: sequences.union(StandardLibrarySequenceType.values),
 )
 
 let generator = Generator(matrix: matrix)
-try! generator.generate(into: "Sources/SomeCollectionOfMyOrg", imports: ["MyOrgLibrary"])
+try! generator.generate(
+    name: "SomeCollectionOfMyOrgLibrary",
+    into: "Sources/SomeCollectionOfMyOrg",
+    imports: ["MyOrgLibrary"]
+)
 ```
 
 When doing this it is recommended but not required to have the `union()` calls with the types defined in `MakeSomeCollectionLib`.
