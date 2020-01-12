@@ -3,7 +3,7 @@
 //
 // Auto Generated
 // MakeSomeCollectionLib 0.2.0
-// 2020-01-11
+// 2020-01-12
 //
 
 public protocol SequenceOfBool: Sequence where Element == Bool {}

@@ -43,8 +43,10 @@ public struct Generator {
     }
 
     // MARK: Public
-    public func generate(into outputPath: String, imports: [String] = []) throws {
+    public func generate(name: String, into outputPath: String, imports: [String]) throws {
         let fileManager = FileManager.default
+        let originalDirectory = fileManager.currentDirectoryPath
+        defer { fileManager.changeCurrentDirectoryPath(originalDirectory) }
         guard let sourceRoot = fileManager.currentDirectoryPath.components(separatedBy: ".build/").first,
             !sourceRoot.isEmpty,
             fileManager.changeCurrentDirectoryPath(sourceRoot) else {
@@ -54,19 +56,20 @@ public struct Generator {
             throw Error.unableToFindTargetOutputDirectory
         }
 
-        try writeProtocols(imports: imports)
-        try writeConformances(imports: imports)
+        try writeProtocols(name: name, imports: imports)
+        try writeConformances(name: name, imports: imports)
     }
 
-    private func writeProtocols(imports: [String]) throws {
+    private func writeProtocols(name: String, imports: [String]) throws {
         var protocols = """
         //
-        // SomeCollectionProtocols.swift
+        // \(name)Protocols.swift
         //
         // Auto Generated
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
+        
         """
         
         if !generateAcrossStandardLibrary {
@@ -113,18 +116,19 @@ public struct Generator {
             protocols += "\n"
         }
 
-        try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
+        try protocols.write(toFile: "\(name)Protocols.swift", atomically: true, encoding: .utf8)
     }
 
-    private func writeConformances(imports: [String]) throws {
+    private func writeConformances(name: String, imports: [String]) throws {
         var conformances = """
         //
-        // SomeCollectionConformances.swift
+        // \(name)Conformances.swift
         //
         // Auto Generated
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
+        
         """
         
         if !generateAcrossStandardLibrary {
@@ -140,7 +144,7 @@ public struct Generator {
         generateConformances(for: matrix.collectionTypes, isCollectionTypes: true, appendingTo: &conformances)
         generateConformances(for: matrix.sequenceTypes, isCollectionTypes: false, appendingTo: &conformances)
 
-        try conformances.write(toFile: "SomeCollectionConformances.swift", atomically: true, encoding: .utf8)
+        try conformances.write(toFile: "\(name)Conformances.swift", atomically: true, encoding: .utf8)
     }
 
     private func generateConformances(for sequenceTypes: [SequenceType], isCollectionTypes: Bool, appendingTo conformances: inout String) {

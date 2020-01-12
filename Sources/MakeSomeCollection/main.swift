@@ -8,4 +8,8 @@
 
 import MakeSomeCollectionLib
 
-try! Generator._forStandardLibrary().generate(into: "Sources/SomeCollection")
+try! Generator._forStandardLibrary().generate(
+    name: "SomeCollection",
+    into: "Sources/SomeCollection",
+    imports: []
+)
