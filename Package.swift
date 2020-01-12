@@ -33,14 +33,14 @@ let package = Package(
             dependencies: [],
             path: "Sources/SomeCollection"
         ),
-        .testTarget(
-            name: "SomeCollectionTests",
-            dependencies: ["SomeCollection"]
-        ),
         .target(
             name: "MakeSomeCollectionLib",
             dependencies: [],
             path: "Sources/MakeSomeCollectionLib"
+        ),
+        .testTarget(
+            name: "MakeSomeCollectionLibTests",
+            dependencies: ["MakeSomeCollectionLib"]
         ),
         .target(
             name: "MakeSomeCollection",

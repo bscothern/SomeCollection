@@ -43,7 +43,7 @@ public struct Generator {
     }
 
     // MARK: Public
-    public func generate(into outputPath: String) throws {
+    public func generate(into outputPath: String, imports: [String] = []) throws {
         let fileManager = FileManager.default
         guard let sourceRoot = fileManager.currentDirectoryPath.components(separatedBy: ".build/").first,
             !sourceRoot.isEmpty,
@@ -54,11 +54,11 @@ public struct Generator {
             throw Error.unableToFindTargetOutputDirectory
         }
 
-        try writeProtocols()
-        try writeConformances()
+        try writeProtocols(imports: imports)
+        try writeConformances(imports: imports)
     }
 
-    public func writeProtocols() throws {
+    private func writeProtocols(imports: [String]) throws {
         var protocols = """
         //
         // SomeCollectionProtocols.swift
@@ -67,8 +67,18 @@ public struct Generator {
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
-
         """
+        
+        if !generateAcrossStandardLibrary {
+            protocols += "\nimport SomeCollection"
+        }
+        imports.forEach { `import` in
+            protocols += "\nimport \(`import`)"
+        }
+        if !generateAcrossStandardLibrary || !imports.isEmpty {
+            protocols += "\n"
+        }
+        
         matrix.elementTypes.forEach { elementType in
             guard generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })  else {
                 return
@@ -106,7 +116,7 @@ public struct Generator {
         try protocols.write(toFile: "SomeCollectionProtocols.swift", atomically: true, encoding: .utf8)
     }
 
-    public func writeConformances() throws {
+    private func writeConformances(imports: [String]) throws {
         var conformances = """
         //
         // SomeCollectionConformances.swift
@@ -115,8 +125,18 @@ public struct Generator {
         // MakeSomeCollectionLib \(Version())
         // \(date)
         //
-
         """
+        
+        if !generateAcrossStandardLibrary {
+            conformances += "\nimport SomeCollection"
+        }
+        imports.forEach { `import` in
+            conformances += "\nimport \(`import`)"
+        }
+        if !generateAcrossStandardLibrary || !imports.isEmpty {
+            conformances += "\n"
+        }
+
         generateConformances(for: matrix.collectionTypes, isCollectionTypes: true, appendingTo: &conformances)
         generateConformances(for: matrix.sequenceTypes, isCollectionTypes: false, appendingTo: &conformances)
 

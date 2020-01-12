@@ -27,6 +27,10 @@ public enum StandardLibraryElementType {
             restrictedTo: [.macOS]
         ),
 
+        "Bool",
+
+        "Error",
+
         "String",
         "Substring",
         "Character",
@@ -34,9 +38,5 @@ public enum StandardLibraryElementType {
         "UTF16.CodeUnit",
         "UTF8.CodeUnit",
         "String.UTF16View.Element",
-
-        "Bool",
-
-        "Error",
     ]
 }
