@@ -8,10 +8,12 @@ A Swift Package to simplify working with Opaque Collections and Sequences.
 When working with a PATs (protocol with assoicatedtype) as an opaque type the `assoicatedtype` informantion is lost and becomes opaque as well.
 This means that if you are wanting to reutrn `some Sequence` or `some Collection` or `some LazySequenceProtocol` or `some LazyCollectionProtocol` the `Element` type will be lost.
 
-SomeCollection has been created to be able to help make it easy to return the `Sequence`/`Collection` PATs as the opaque type without losing what `Element` is.`   
+SomeCollection has been created to be able to help make it easy to return the `Sequence`/`Collection` PATs as the opaque type without losing what `Element` is.
+This is accomplished by providing protocols and conformances to these protocols such as: `CollectionOfInt` which ensures you are getting a `Collection` where the `Element` type is `Int`.
+This is essentially the same as if you could say: `some Collection<Int>`.
 
 ## Swift Package Manager
-Update your `Package.swift` or Xcode to include this package as a dependency:
+Update your `Package.swift` or Xcode 11+ to include this package as a dependency:
 ```swift
 .package(url: "https://github.com/bscothern/SomeCollection.git", from: "1.0.0")
 ```
@@ -63,29 +65,32 @@ More are supported but they are less common and not listed here.
 * Character
 
 ## Supporting Custom Types
+SomeCollection has been designed from the start to support custom types.
 `MakeSomeCollectionLib` is the engine used to generate the `SomeCollection` library.
-It has been setup so users can depend on it to have their own `MakeSomeCollectionOfMyOrgName` to generate their own additional conformances to `Sequence`, `Collection`, or `Element` types.
+It has been setup so users can depend on it to have their own `MakeSomeCollectionOfYourOrgName` to generate their own additional conformances to `Sequence`, `Collection`, or `Element` types.
 
 You can do this by creating your swift package and having it depend on this package.
-Create an executable and target along the lines of `MakeSomeCollectionOfMyOrgName` that makes sense for you and have its target depend on `MakeSomeCollectionLib`.
+Create an executable and target along the lines of `MakeSomeCollectionOfYourOrgName` that makes sense for you and have its target depend on `MakeSomeCollectionLib`.
+
+It is recommended that your library of generated code be called: `SomeCollectionofYourOrgName`
 
 You then need to modify the target's `main.swift` to be similar to this:
 ```swift
 import MakeSomeCollectionLib
 
-// MyOrg's Custom Sequences
+// YourOrg's Custom Sequences
 let sequences: Set<SequenceType> = [
     "CustomSequence1",
     "CustomSequence2",
 ]
 
-// MyOrg's Custom Collections
+// YourOrg's Custom Collections
 let collections: Set<CollectionType> = [
     "CustomCollection1",
     "CustomCollection2",
 ]
 
-// MyOrg's Elements
+// YourOrg's Elements
 let elements: Set<ElementType> = [
     "Element1",
     "Element2",
@@ -100,9 +105,9 @@ sequenceTypes: sequences.union(StandardLibrarySequenceType.values),
 
 let generator = Generator(matrix: matrix)
 try! generator.generate(
-    name: "SomeCollectionOfMyOrgLibrary",
-    into: "Sources/SomeCollectionOfMyOrg",
-    imports: ["MyOrgLibrary"]
+    name: "SomeCollectionOfYourOrgLibrary",
+    into: "Sources/SomeCollectionOfYourOrg",
+    imports: ["YourOrgLibrary"]
 )
 ```
 
@@ -116,3 +121,10 @@ I have almost certainly missed types and new ones can be added to the standard l
 In this case you can either open an issue or PR.
 * If you open an issue please specify what the type is and I will add support for it if it is in the standard library.
 * If you want to submit a PR you will need to update `Sources/MakeSomeCollectionLib/StandardLibraryTypes` files to know about the new type. Once you have updated the type lists use `swift run` to have the `SomeCollection` library rebuild.
+
+### What about Foundation?
+I am planning on adding support for Foundation types right away and should have them very soon.
+They will likely be a part of this same package but in a different library which will likely be named: `SomeCollectionOfFoundation`.
+
+## Some Other Bug/Feature Request
+Open up an issue with the bug or feature request.
