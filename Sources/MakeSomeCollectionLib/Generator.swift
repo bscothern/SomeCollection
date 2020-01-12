@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Parses a `GernaratorMatrix` to generate protocol definitions and conformances.
 public struct Generator {
     // MARK: - Types
     public enum Error: Swift.Error {
@@ -22,6 +23,10 @@ public struct Generator {
     var date: String { String(Date().description.split(separator: " ").first!) }
 
     // MARK: - Init
+    
+    /// Create a `Generator`.
+    ///
+    /// - Parameter matrix: The matrix of `Seqeunce`, `Collection`, and `Element` types to use.
     public init(matrix: GenerationMatrix) {
         self.init(matrix: matrix, generateAcrossStandardLibrary: false)
     }
@@ -43,6 +48,14 @@ public struct Generator {
     }
 
     // MARK: Public
+    
+    /// Run the generator.
+    ///
+    /// - Parameters:
+    ///   - name: The name to put at the start of the two files generated.
+    ///       "\(name)Conformances.swift" and "\(name)Protocols.swift" will be the files created at `outputPath`.
+    ///   - outputPath: The path to where output files should be created.
+    ///   - imports: Any imports that should be put at the top of the generated files.
     public func generate(name: String, into outputPath: String, imports: [String]) throws {
         let fileManager = FileManager.default
         let originalDirectory = fileManager.currentDirectoryPath
@@ -82,39 +95,43 @@ public struct Generator {
             protocols += "\n"
         }
         
-        matrix.elementTypes.forEach { elementType in
-            guard generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })  else {
-                return
+        matrix.elementTypes.lazy
+            .filter { !$0.applicablePlatforms.isEmpty }
+            .filter { elementType in
+                self.generateAcrossStandardLibrary || !StandardLibraryElementType.values.contains(where: { $0.name == elementType.name })
             }
-            
-            protocols += "\n"
-            let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
-            if isRestricted {
-                protocols += "#if"
-                elementType.applicablePlatforms
-                    .sorted()
-                    .forEach { platform in
-                        protocols += " os(\(platform.rawValue))"
+            .forEach { elementType in
+                protocols += "\n"
+                let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
+                if isRestricted {
+                    protocols += "#if"
+                    let platforms = elementType.applicablePlatforms.sorted()
+                    protocols += " os(\(platforms.first!.rawValue))"
+
+                    platforms
+                        .dropFirst()
+                        .forEach { platform in
+                            protocols += " || os(\(platform.rawValue))"
+                        }
+                    protocols += "\n"
+                }
+                
+                protocols += """
+                public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
+                public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
+                public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
+                public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
+                public protocol Lazy\(elementType.sequenceName): LazySequenceProtocol, \(elementType.sequenceName) {}
+                public protocol Lazy\(elementType.collectionName): LazyCollectionProtocol, \(elementType.collectionName) {}
+                public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
+                public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
+                """
+                
+                if isRestricted {
+                    protocols += "\n#endif"
                 }
                 protocols += "\n"
             }
-            
-            protocols += """
-            public protocol \(elementType.sequenceName): Sequence where Element == \(elementType.name) {}
-            public protocol \(elementType.collectionName): Collection, \(elementType.sequenceName) {}
-            public protocol \(elementType.sequenceNameOptional): Sequence where Element == \(elementType.name)? {}
-            public protocol \(elementType.collectionNameOptional): Collection, \(elementType.sequenceNameOptional) {}
-            public protocol Lazy\(elementType.sequenceName): LazySequenceProtocol, \(elementType.sequenceName) {}
-            public protocol Lazy\(elementType.collectionName): LazyCollectionProtocol, \(elementType.collectionName) {}
-            public protocol Lazy\(elementType.sequenceNameOptional): LazySequenceProtocol, \(elementType.sequenceNameOptional) {}
-            public protocol Lazy\(elementType.collectionNameOptional): LazyCollectionProtocol, \(elementType.collectionNameOptional) {}
-            """
-            
-            if isRestricted {
-                protocols += "\n#endif"
-            }
-            protocols += "\n"
-        }
 
         try protocols.write(toFile: "\(name)Protocols.swift", atomically: true, encoding: .utf8)
     }
@@ -153,6 +170,7 @@ public struct Generator {
                 var added = false
                 matrix.elementTypes
                     .lazy
+                    .filter { !$0.applicablePlatforms.isEmpty }
                     .filter { elementType in
                         // Limited To / Included Overrides
                         sequenceType.limitedToElementTypes.isEmpty || sequenceType.limitedToElementTypes.contains { $0.name == elementType.name } || (isCollectionTypes ? elementType.includedCollectionTypes : elementType.includedSequenceTypes).contains { $0.name == sequenceType.name }
@@ -182,13 +200,15 @@ public struct Generator {
                         let isRestricted = elementType.applicablePlatforms.count != Platform.allCases.count
                         if isRestricted {
                             conformances += "\n#if"
-                            elementType.applicablePlatforms
-                                .sorted()
+                            let platforms = elementType.applicablePlatforms.sorted()
+                            conformances += " os(\(platforms.first!.rawValue))"
+
+                            platforms
+                                .dropFirst()
                                 .forEach { platform in
-                                    conformances += " os(\(platform.rawValue))"
+                                    conformances += " || os(\(platform.rawValue))"
                                 }
                         }
-                        
                         var conformancesToApply: [String] = []
                         var whereClause: String {
                             sequenceType.skipWhereClause ? "" : " where \(sequenceType.genericName) == \(elementType.name)"

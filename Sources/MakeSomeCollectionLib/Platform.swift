@@ -6,6 +6,7 @@
 //  Copyright © 2020 Braden Scothern. All rights reserved.
 //
 
+/// Describes the platforms supported by Swift for use in `#if os(...)` compiler directives.
 public enum Platform: String, CaseIterable {
     case macOS
     case iOS

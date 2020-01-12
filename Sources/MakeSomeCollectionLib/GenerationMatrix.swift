@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Bundles the matrix of data together required by `Generator`.
 public struct GenerationMatrix {
     let sequenceTypes: [SequenceType]
     let collectionTypes: [CollectionType]
